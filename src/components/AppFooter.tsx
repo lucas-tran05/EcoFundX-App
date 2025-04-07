@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { Typography, Space, Row, Col, Divider, Layout, Flex } from "antd";
 import { FacebookOutlined, TwitterOutlined, LinkedinOutlined } from "@ant-design/icons";
 import Link from "next/link";
@@ -12,12 +13,18 @@ const Footer: React.FC = () => {
         <Layout.Footer style={{
             backgroundColor: "var(--footer-background)",
             color: "var(--footer-text)",
-            padding: "48px 0 24px 0"
+            padding: "48px",
         }}>
             <Flex vertical align="center">
-                <Flex gap={48}>
+                <Row gutter={[32, 32]}>
                     {/* Logo và mô tả */}
                     <Col xs={24} sm={24} md={6} lg={6}>
+                        <Image
+                            src="/images/logo_ecofundx_style2.png"
+                            alt="Logo EcoFundX"
+                            width={100}
+                            height={100}
+                        />
                         <Title level={4} style={{ color: "var(--footer-text)", margin: "0 0 16px 0" }}>
                             <span style={{ color: "var(--primary-color)" }}>EcoFund</span>X
                         </Title>
@@ -65,7 +72,7 @@ const Footer: React.FC = () => {
                     </Col>
 
                     {/* Kết nối */}
-                    <Col xs={24} sm={8} md={6} lg={6}>
+                    <Col xs={24} sm={8} md={5} lg={5}>
                         <Title level={5} style={{ color: "white", margin: "0 0 16px 0" }}>
                             Connect with us
                         </Title>
@@ -81,7 +88,7 @@ const Footer: React.FC = () => {
                             </Link>
                         </Space>
                     </Col>
-                </Flex>
+                </Row>
 
                 <Divider style={{ borderColor: "var(--border-color)", margin: "32px 0 24px 0" }} />
 

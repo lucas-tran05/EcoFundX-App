@@ -10,6 +10,9 @@ import theme from '../styles/themeConfig';
 export const metadata: Metadata = {
     title: 'EcofundX',
     description: 'A platform for eco-friendly projects',
+    icons: {
+        icon: '/favicon.png',
+    },
 };
 
 export default function RootLayout({
@@ -23,7 +26,7 @@ export default function RootLayout({
                 <body>
                     <AntdRegistry >
                         <AppHeader />
-                        {children}
+                            {children}
                         <AppFooter />
                     </AntdRegistry>
                 </body>
