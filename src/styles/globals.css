@@ -8,11 +8,17 @@
 :root {
     /* mau chu dao */
     --primary-color: #059669;
+    --secondary-color: #ECFDF5;
+    --tertiary-color: #3B82F6;
+    --quaternary-color: #F9FAFB;
 
     /* mau nen chu dao */
     --background-primary: #ffffff;
     --background-secondary: #f9fafb;
     --background-tertiary: #f3f4f6;
+
+    /* background gradient */
+    --background-gradient: linear-gradient(90deg, #ECFDF5 0%, #EFF6FF 100%);
 
     /* mau chu */
     --text-primary: #333333;
@@ -48,4 +54,8 @@
 
 .ant-btn-primary:active {
     opacity: 0.6; /* more transparent when clicked */
+}
+
+.ant-drawer .ant-menu-item-selected {
+    background-color: var(--secondary-color) !important;
 }

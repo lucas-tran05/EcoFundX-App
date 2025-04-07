@@ -13,7 +13,7 @@ const theme: ThemeConfig = {
             colorPrimaryActive: 'var(--primary-color)', 
         },
         Menu: {
-            colorPrimary: 'var(--primary-color)', 
+            colorPrimary: 'var(--primary-color)',
         },
     },
 };
