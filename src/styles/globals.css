@@ -59,3 +59,8 @@
 .ant-drawer .ant-menu-item-selected {
     background-color: var(--secondary-color) !important;
 }
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: var(--primary-color) !important;
+    color: var(--background-primary) !important;
+}

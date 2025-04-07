@@ -1,34 +1,34 @@
 'use client';
 import React from "react";
-import { Card, Button, Progress } from "antd";
+import { Card, Button, Progress, Flex, Typography, Tag } from "antd";
+import type { ProgressProps } from 'antd';
 import { CSSProperties } from "react";
 
 interface ProjectsCardProps {
     title: string;
+    tag?: string;
     description: string;
+    endDate?: Date;
     progress: number;
-    amount: number | string;
+    amount: number;
     image?: string;
     onClick?: () => void;
 }
 
 export default function ProjectsCard({
     title = "none",
+    tag = "none",
     description = "none",
+    endDate = new Date(),
     progress = 0,
-    amount = "0",
+    amount = 0,
     image = "/solar-panels.jpg",
     onClick
 }: ProjectsCardProps) {
 
-    const tagStyle: CSSProperties = {
-        display: 'inline-block',
-        padding: '4px 12px',
-        borderRadius: '16px',
-        backgroundColor: 'rgba(0, 184, 124, 0.1)',
-        color: '#00B87C',
-        fontSize: '14px',
-        marginBottom: '8px'
+    const twoColors: ProgressProps['strokeColor'] = {
+        '0%': '#108ee9',
+        '100%': '#87d068',
     };
 
     const amountStyle: CSSProperties = {
@@ -50,21 +50,29 @@ export default function ProjectsCard({
                 </div>
             }
         >
-            <div style={tagStyle}>Năng lượng tái tạo</div>
-            <h3 style={{ fontSize: '18px', margin: '8px 0' }}>{title}</h3>
-            <p style={{ color: '#666', fontSize: '14px' }}>{description}</p>
+            <Flex justify="space-between">
+                <Tag color="blue">{tag}</Tag>
+                <Typography.Text type="secondary">
+                {endDate ? Math.ceil((endDate.getTime() - Date.now()) / (1000 * 3600 * 24)) : "No end"} days left
+                </Typography.Text>
+            </Flex>
+            <Typography.Title level={5} style={{ margin: '8px 0', fontWeight: 'bold' }}>
+                {title}
+            </Typography.Title>
+            <Typography.Paragraph type="secondary" style={{ marginBottom: '16px' }} ellipsis={{ rows: 2 }}>
+                {description}
+            </Typography.Paragraph>
             <Progress
                 percent={progress}
                 status="active"
-                strokeColor="#00B87C"
-                format={() => `${progress}% đạt mục tiêu`}
+                strokeColor={twoColors}
             />
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '16px' }}>
-                <div style={amountStyle}>₫{amount}</div>
-                <Button type="primary" onClick={onClick}>
-                    Tham gia ngay
+            <Flex justify="space-between" align="middle" style={{ marginTop: '16px' }}>
+                <Typography.Text style={amountStyle}>₫{Number(amount).toLocaleString('vi-VN')}</Typography.Text>
+                <Button type="primary" size="large" onClick={onClick}>
+                    Join now
                 </Button>
-            </div>
+            </Flex>
         </Card>
     );
 }

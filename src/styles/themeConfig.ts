@@ -14,7 +14,7 @@ const theme: ThemeConfig = {
         },
         Menu: {
             colorPrimary: 'var(--primary-color)',
-        },
+        }
     },
 };
 

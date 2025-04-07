@@ -28,25 +28,34 @@ export default function HomePage() {
     ];
     const projects = [
         {
+            id: 1,
             title: "Project 1",
+            tag: "Renewable energy",
             description: "Description of project 1",
             image: "/images/home.svg",
+            endDate: new Date("2026-12-31"),
             progress: 50,
             amount: 1000000,
             onClick: () => console.log("Project 1 clicked"),
         },
         {
+            id: 2,
             title: "Project 2",
+            tag: "Renewable energy",
             description: "Description of project 2",
             image: "/images/home.svg",
+            endDate: new Date("2026-1-31"),
             progress: 75,
             amount: 2000000,
             onClick: () => console.log("Project 2 clicked"),
         },
         {
+            id: 3,
             title: "Project 3",
+            tag: "Renewable energy",
             description: "Description of project 3",
             image: "/images/home.svg",
+            endDate: new Date("2026-2-28"),
             progress: 25,
             amount: 500000,
             onClick: () => console.log("Project 3 clicked"),
@@ -218,18 +227,22 @@ export default function HomePage() {
                     </Col>
                 </Row>
             </Flex>
+                
+            {/* Projects Section */}
             <Flex vertical gap="large" style={{ padding: "64px" }} >
-                <Typography.Title level={2} style={{ textAlign: "center", fontWeight: "bold" }}>
+                <Typography.Title level={2} style={{ textAlign: "center", fontWeight: "bold" }} ellipsis={{ rows: 1 }}>
                     Featured Projects
                 </Typography.Title>
                 <Row gutter={[32, 32]} justify="center" style={{ width: "100%" }}>
-                    {projects.map((project, index) => (
+                    {projects.map((project) => (
                         <Col xs={24} sm={24} md={8} lg={8}>
                         <ProjectsCard
-                            key={index}
+                            key={project.id}
                             title={project.title}
+                            tag={project.tag}
                             description={project.description}
                             image={project.image}
+                            endDate={project.endDate}
                             progress={project.progress}
                             amount={project.amount}
                             onClick={project.onClick}
