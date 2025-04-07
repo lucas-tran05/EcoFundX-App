@@ -107,6 +107,7 @@ const Register: FC = () => {
                     <Col xs={24} sm={24} md={8} lg={8}>
                     <ProjectsCard
                         key={project.id}
+                        _id={project.id}
                         title={project.title}
                         tag={project.tag}
                         description={project.description}

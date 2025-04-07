@@ -1,10 +1,12 @@
 'use client';
 import React from "react";
+import Link from "next/link";
 import { Card, Button, Progress, Flex, Typography, Tag } from "antd";
 import type { ProgressProps } from 'antd';
 import { CSSProperties } from "react";
 
 interface ProjectsCardProps {
+    _id: string | number;
     title: string;
     tag?: string;
     description: string;
@@ -16,6 +18,7 @@ interface ProjectsCardProps {
 }
 
 export default function ProjectsCard({
+    _id = "none",
     title = "none",
     tag = "none",
     description = "none",
@@ -53,7 +56,7 @@ export default function ProjectsCard({
             <Flex justify="space-between">
                 <Tag color="blue">{tag}</Tag>
                 <Typography.Text type="secondary">
-                {endDate ? Math.ceil((endDate.getTime() - Date.now()) / (1000 * 3600 * 24)) : "No end"} days left
+                    {endDate ? Math.ceil((endDate.getTime() - Date.now()) / (1000 * 3600 * 24)) : "No end"} days left
                 </Typography.Text>
             </Flex>
             <Typography.Title level={5} style={{ margin: '8px 0', fontWeight: 'bold' }}>
@@ -69,8 +72,8 @@ export default function ProjectsCard({
             />
             <Flex justify="space-between" align="middle" style={{ marginTop: '16px' }}>
                 <Typography.Text style={amountStyle}>₫{Number(amount).toLocaleString('vi-VN')}</Typography.Text>
-                <Button type="primary" size="large" onClick={onClick}>
-                    Join now
+                <Button type="primary" onClick={onClick}>
+                    <Link href={`/projects/${_id}`}>Tham gia ngay</Link>
                 </Button>
             </Flex>
         </Card>
