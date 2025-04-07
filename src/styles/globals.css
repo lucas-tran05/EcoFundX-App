@@ -56,6 +56,17 @@
     opacity: 0.6; /* more transparent when clicked */
 }
 
-.ant-drawer .ant-menu-item-selected {
+
+.ant-menu-item-selected:not(.ant-menu-item-disabled){
     background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+}
+.ant-menu-item:hover {
+    background-color: var(--secondary-color) !important;
+    color: var(--primary-color) !important;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    background-color: var(--primary-color) !important;
+    color: var(--background-primary) !important;
 }

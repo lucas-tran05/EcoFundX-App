@@ -52,6 +52,7 @@
                     {!isMobile ? (
                         <Flex>
                             <Menu
+                                className="menu-header"
                                 mode="horizontal"
                                 defaultSelectedKeys={['home']}
                                 style={{ width: '100%', border: 'none' }}
