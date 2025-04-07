@@ -1,0 +1,17 @@
+/* Light Mode */
+:root {
+    --primary-color: #059669; /* Màu chính */
+    --background-color: #f5f5f5; /* Nền sáng */
+    --text-color: #333333; /* Màu chữ sáng */
+}
+
+/* Dark Mode */
+[data-theme="dark"] {
+    --primary-color: #1abc9c; /* Màu chính tối */
+    --background-color: #2e2e2e; /* Nền tối */
+    --text-color: #ffffff; /* Màu chữ tối */
+}
+
+button {
+    border-radius: 8px;
+}
