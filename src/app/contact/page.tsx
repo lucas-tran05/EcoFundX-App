@@ -1,14 +1,12 @@
 'use client';
 import { FC } from "react";
 
-const Login: FC = () => {
+const Contact: FC = () => {
     return (
         <footer>
-            <h1>Login
-            
-            </h1>
+            <h1>Contact</h1>
         </footer>
     );
 };
 
-export default Login;
+export default Contact;

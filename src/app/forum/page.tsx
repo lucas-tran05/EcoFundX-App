@@ -1,14 +1,12 @@
 'use client';
 import { FC } from "react";
 
-const Login: FC = () => {
+const Forum: FC = () => {
     return (
         <footer>
-            <h1>Login
-            
-            </h1>
+            <h1>Forum</h1>
         </footer>
     );
 };
 
-export default Login;
+export default Forum;
