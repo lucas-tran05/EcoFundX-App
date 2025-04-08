@@ -2,11 +2,13 @@
 import React from 'react';
 import { Layout, Button, Input, List, Avatar, Tag, Space, Typography } from 'antd';
 import { MessageOutlined, LikeOutlined, MoreOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 const { Title, Text } = Typography;
 
 interface PostsCardProps {
     _id: string | number;
     author: {
+        _id: string | number;
         name: string;
         avatar: string;
         role?: string;
@@ -23,6 +25,7 @@ interface PostsCardProps {
 export default function PostsCard({
     _id = "none",
     author = {
+        _id: "none",
         name: "none",
         avatar: "none",
         role: "none"
@@ -55,11 +58,12 @@ export default function PostsCard({
             <List.Item.Meta
                 avatar={<Avatar src={author.avatar}>{author.name[0]}</Avatar>}
                 title={<Space direction="vertical" size={0}>
-                    <Text strong>{author.name}</Text>
+                    <Text strong><Link style={{ color: 'var(--text-primary)' }} href={`/view/profile/${author._id}`}>{author.name}</Link></Text>
                     <Text type="secondary" style={{ fontSize: '12px' }}>{timeAgo}</Text>
                 </Space>}
+                style={{ marginBottom: '0' }}
             />
-            <Title level={4}>{title}</Title>
+            <Title level={4}><Link style={{ color: 'var(--text-primary)' }} href={`/post/${_id}`}>{title}</Link></Title>
             <Text>{content}</Text>
         </List.Item>
     );
