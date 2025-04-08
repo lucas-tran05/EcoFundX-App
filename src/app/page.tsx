@@ -109,7 +109,7 @@ export default function HomePage() {
                         </Typography.Paragraph>
                         <Flex gap={16} style={{ marginTop: "32px" }}>
                             <Button type="primary" size="large">
-                                <Link href="/create/step-1">Get Started</Link>
+                                <Link href="/create/infomations">Get Started</Link>
                             </Button>
                             <Button type="default" size="large" onClick={() => { 
                                 scrollTo({ top: window.innerHeight, behavior: 'smooth' })
@@ -198,7 +198,7 @@ export default function HomePage() {
                                 size="large"
                                 style={{ width: "100%", marginTop: "24px" }}
                             >
-                                <Link href="/create/step-1">Start Funding Now</Link>
+                                <Link href="/create/infomations">Start Funding Now</Link>
                             </Button>
                         </Card>
                     </Col>
@@ -267,7 +267,7 @@ export default function HomePage() {
                 </Typography.Paragraph>
                 <Space>
                     <Button type="primary" size="large">
-                        <Link href="/create/step-1">Start Funding</Link>
+                        <Link href="/create/infomations">Start Funding</Link>
                     </Button>
                     <Button type="default" size="large">
                         <Link href="/projects">Explore Projects</Link>
