@@ -8,13 +8,13 @@ export default function CreateLayout({ children }: { children: React.ReactNode }
     const pathname = usePathname();
 
     let currentStep = 0;
-    if (pathname.includes('step-1')) {
+    if (pathname.includes('information')) {
         currentStep = 0;
-    } else if (pathname.includes('step-2')) {
+    } else if (pathname.includes('rewards')) {
         currentStep = 1;
-    } else if (pathname.includes('step-3')) {
+    } else if (pathname.includes('legality')) {
         currentStep = 2;
-    } else if (pathname.includes('step-4')) {
+    } else if (pathname.includes('review')) {
         currentStep = 3;
     }
 
@@ -23,26 +23,34 @@ export default function CreateLayout({ children }: { children: React.ReactNode }
             <Col xs={24} sm={24} md={24} lg={18} xl={18}>
                 <Steps
                     current={currentStep}
+                    size='small'
+                    type='navigation'
                     items={[
                         {
-                            title: 'Login',
+                            title: 'Information',
                             icon: <UserOutlined />,
                         },
                         {
-                            title: 'Verification',
+                            title: 'Rewards',
                             icon: <SolutionOutlined />,
                         },
                         {
-                            title: 'Pay',
+                            title: 'Legality',
                             icon: <PayCircleFilled />,
                         },
                         {
-                            title: 'Done',
+                            title: 'Preview',
                             icon: <SmileOutlined />,
                         },
                     ]}
+                    style={{ marginBottom: '32px' }}
                 />
-                {children}
+
+                <Row gutter={[24, 24]} align="middle" justify="center">
+                    <Col span={24}>
+                        {children}
+                    </Col>
+                </Row>
             </Col>
         </Row>
     )

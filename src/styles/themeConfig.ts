@@ -18,6 +18,10 @@ const theme: ThemeConfig = {
         Steps: {
             colorPrimary: 'var(--primary-color)',
         },
+        Checkbox: {
+            colorPrimary: 'var(--primary-color)',
+            colorPrimaryHover: 'var(--primary-color)',
+        },
     },
 };
 
