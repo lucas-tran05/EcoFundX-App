@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Typography, Card, Row, Col, Button, Divider, Tag, Image, Descriptions, List } from 'antd';
 import { ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
@@ -122,9 +123,11 @@ const ProjectReviewPage: React.FC = () => {
                 <Divider />
 
                 <Row justify="space-between">
-                    <Button icon={<ArrowLeftOutlined />} href="/create/legality">
-                        Back
-                    </Button>
+                    <Link href="/create/legality">
+                        <Button icon={<ArrowLeftOutlined />} >
+                            Back
+                        </Button>
+                    </Link>
 
                     <Button
                         type="primary"
