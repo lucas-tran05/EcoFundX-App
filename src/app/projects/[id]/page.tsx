@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
-import { Layout, Row, Col, Button, Typography, Progress, Card, Divider } from "antd";
+import { Layout, Row, Col, Button, Typography, Progress, Card, Divider, Space, Avatar, Collapse, Input, List } from "antd";
+import { LinkedinOutlined, TwitterOutlined, GlobalOutlined, SafetyOutlined, WarningOutlined, DownOutlined, SendOutlined } from '@ant-design/icons';
 import type { ProgressProps } from 'antd';
 import GifCard from '@/components/card/GifCard';
+import CommentCard, { CommentType } from '@/components/card/CommentCard';
 import { FC } from "react";
 import { useParams } from 'next/navigation';
 
@@ -116,7 +118,7 @@ const projects = [
         onClick: () => console.log("Project 4 clicked"),
     },
     {
-        id:'5',
+        id: '5',
         title: "Project 5",
         tag: "Renewable energy",
         description: "Description of project 5",
@@ -171,6 +173,22 @@ const projects = [
     }
 ];
 
+const comments: CommentType[] = [
+    {
+        id: '1',
+        author: 'Sarah Johnson',
+        avatar: '/avatars/sarah.jpg',
+        content: 'This is exactly the kind of sustainable solution we need. Looking forward to seeing this implemented!',
+        datetime: '2 days ago'
+    },
+    {
+        id: '2',
+        author: 'David Williams',
+        avatar: '/avatars/david.jpg',
+        content: 'Have you considered implementing this in tropical regions? The solar efficiency might be even better there.',
+        datetime: '1 day ago'
+    }
+];
 
 const ProjectView: FC = () => {
     const { id } = useParams();
@@ -242,6 +260,172 @@ const ProjectView: FC = () => {
                             </Layout.Content>
                         </Col>
                     </Row>
+                    <Divider />
+                    {/* Project Creator */}
+                    <Layout.Content style={{ padding: '24px' }}>
+                        <Typography.Title level={4}>Project Creator</Typography.Title>
+                        <Row gutter={[16, 16]} align="middle" style={{ marginBottom: '16px' }}>
+                            <Col xs={24} sm={24} md={6} lg={4} style={{ textAlign: 'center' }}>
+                                <Avatar size={100} src="/avatar.jpg" />
+                            </Col>
+                            <Col xs={24} sm={24} md={18} lg={20}>
+                                <Typography.Title level={5}>Dr. Michael Chen</Typography.Title>
+                                <Typography.Text type="secondary">Environmental Engineer & Sustainability Expert</Typography.Text>
+                                <Typography.Paragraph style={{ marginTop: '8px' }}>
+                                    With 15 years of experience in sustainable technology development, Dr. Chen has successfully implemented water purification systems across three continents.
+                                </Typography.Paragraph>
+                                <Space>
+                                    <LinkedinOutlined />
+                                    <TwitterOutlined />
+                                    <GlobalOutlined />
+                                </Space>
+                            </Col>
+                        </Row>
+                    </Layout.Content>
+                    {/* Risks & Challenges */}
+                    <Layout.Content style={{ padding: '24px' }}>
+                        <Typography.Title level={4}>Risks & Challenges</Typography.Title>
+                        <Row gutter={[24, 24]}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
+                                <Card>
+                                    <WarningOutlined style={{ fontSize: '24px', color: '#faad14' }} />
+                                    <div>
+                                        <Typography.Title level={5}>Supply Chain Risks</Typography.Title>
+                                        <Typography.Text>
+                                            Potential delays in component delivery due to global supply chain disruptions. We have multiple suppliers lined up to mitigate this risk.
+                                        </Typography.Text>
+                                    </div>
+                                </Card>
+                            </Col>
+                            <Col xs={24} sm={24} md={12} lg={12}>
+                                <Card>
+                                    <SafetyOutlined style={{ fontSize: '24px', color: '#1890ff' }} />
+                                    <div>
+                                        <Typography.Title level={5}>Quality Assurance</Typography.Title>
+                                        <Typography.Text>
+                                            Each unit undergoes rigorous testing before deployment. We maintain ISO 9001 certification for quality management systems.
+                                        </Typography.Text>
+                                    </div>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Layout.Content>
+                    {/* Funding Allocation */}
+                    <Layout.Content style={{ padding: '24px' }}>
+                        <Typography.Title level={4}>Funding Allocation</Typography.Title>
+                        <Row gutter={[24, 24]}>
+                            <Col xs={24} sm={24} md={12} lg={12}>
+                                <div style={{ marginBottom: '16px' }}>
+                                    <Typography.Text>Research & Development</Typography.Text>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <Progress
+                                            percent={40}
+                                            showInfo={false}
+                                            strokeColor="#1bab6b"
+                                            style={{ flex: 1, marginRight: '10px' }}
+                                        />
+                                        <Typography.Text strong>40%</Typography.Text>
+                                    </div>
+                                </div>
+                                <div style={{ marginBottom: '16px' }}>
+                                    <Typography.Text>Manufacturing</Typography.Text>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <Progress
+                                            percent={30}
+                                            showInfo={false}
+                                            strokeColor="#4285f4"
+                                            style={{ flex: 1, marginRight: '10px' }}
+                                        />
+                                        <Typography.Text strong>30%</Typography.Text>
+                                    </div>
+                                </div>
+                                <div style={{ marginBottom: '16px' }}>
+                                    <Typography.Text>Distribution</Typography.Text>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <Progress
+                                            percent={20}
+                                            showInfo={false}
+                                            strokeColor="#a142f4"
+                                            style={{ flex: 1, marginRight: '10px' }}
+                                        />
+                                        <Typography.Text strong>20%</Typography.Text>
+                                    </div>
+                                </div>
+                                <div>
+                                    <Typography.Text>Marketing</Typography.Text>
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <Progress
+                                            percent={10}
+                                            showInfo={false}
+                                            strokeColor="#f4b400"
+                                            style={{ flex: 1, marginRight: '10px' }}
+                                        />
+                                        <Typography.Text strong>10%</Typography.Text>
+                                    </div>
+                                </div>
+                            </Col>
+                            <Col xs={24} sm={24} md={12} lg={12}>
+                                <Card style={{ marginBottom: '24px' }}>
+                                    <Typography.Title level={5}>Transparent Reporting</Typography.Title>
+                                    <Typography.Text>
+                                        Monthly updates on fund utilization will be shared with all backers through our dashboard.
+                                    </Typography.Text>
+                                </Card>
+                                <Card>
+                                    <Typography.Title level={5}>Milestone-based Release</Typography.Title>
+                                    <Typography.Text>
+                                        Funds will be released in phases based on achievement of project milestones.
+                                    </Typography.Text>
+                                </Card>
+                            </Col>
+                        </Row>
+                    </Layout.Content>
+                    {/* FAQ Section */}
+                    <Layout.Content style={{ padding: '24px' }}>
+                        <Typography.Title level={4}>Frequently Asked Questions</Typography.Title>
+                        <Collapse
+                            bordered={false}
+                            expandIconPosition="end"
+                            expandIcon={({ isActive }) => <DownOutlined rotate={isActive ? 180 : 0} />}
+                        >
+                            <Collapse.Panel header="What is the expected delivery timeline?" key="1">
+                                <p>Content for delivery timeline question</p>
+                            </Collapse.Panel>
+                            <Collapse.Panel header="How will the funds be managed?" key="2">
+                                <p>Content for funds management question</p>
+                            </Collapse.Panel>
+                            <Collapse.Panel header="What happens if the project doesn't reach its goal?" key="3">
+                                <p>Content for project goal question</p>
+                            </Collapse.Panel>
+                        </Collapse>
+                    </Layout.Content>
+                    <Layout.Content style={{ padding: '24px' }}>
+
+                        <Typography.Title level={4} style={{ marginBottom: '24px' }}>Community Discussion</Typography.Title>
+
+                        <div style={{ marginBottom: '20px' }}>
+                            <Input.TextArea
+                                placeholder="Share your thoughts..."
+                                autoSize={{ minRows: 3, maxRows: 6 }}
+                                style={{ marginBottom: '16px', borderRadius: '8px', padding: '12px' }}
+                            />
+                            <Button
+                                type="primary"
+                                icon={<SendOutlined />}
+                            >
+                                Post Comment
+                            </Button>
+                        </div>
+
+                        <List
+                            itemLayout="horizontal"
+                            dataSource={comments}
+                            renderItem={(item) => (
+                                <CommentCard key={item.id} comment={item} />
+                            )}
+                        />
+
+                    </Layout.Content>
                 </Card>
             </Col>
         </Row>

@@ -4,6 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Flex, Tag, Row, Col, Typography, Avatar, Card, Divider, Image, Space, Button, Input, List } from 'antd';
 import PostsCard from '@/components/card/PostsCard';
+import CommentCard, { CommentType } from '@/components/card/CommentCard';
 import { FaRegBookmark, FaRegHeart, FaRegComment, FaShareAlt } from 'react-icons/fa';
 import { useParams } from 'next/navigation';
 
@@ -23,7 +24,7 @@ const mockPosts = [
         likes: 124,
         isBookmarked: true,
         tag: 'Environment',
-        image: 'https://source.unsplash.com/featured/?nature',
+        image: '/images/post.png',
     },
     {
         _id: '2',
@@ -41,6 +42,23 @@ const mockPosts = [
         isBookmarked: false,
         tag: 'Tips',
         image: 'https://source.unsplash.com/featured/?eco',
+    }
+];
+
+const comments: CommentType[] = [
+    {
+        id: '1',
+        author: 'Sarah Johnson',
+        avatar: '/avatars/sarah.jpg',
+        content: 'This is exactly the kind of sustainable solution we need. Looking forward to seeing this implemented!',
+        datetime: '2 days ago'
+    },
+    {
+        id: '2',
+        author: 'David Williams',
+        avatar: '/avatars/david.jpg',
+        content: 'Have you considered implementing this in tropical regions? The solar efficiency might be even better there.',
+        datetime: '1 day ago'
     }
 ];
 
@@ -111,7 +129,7 @@ export default function PostPage() {
                     <Divider />
                     <Flex vertical style={{ width: '100%' }}>
                         <Typography.Title level={4}>Comments ({post.replies})</Typography.Title>
-                        <Flex align="flex-start" gap="16px" style={{ width: '100%' }}>
+                        <Flex align="flex-start" gap="16px" style={{ width: '100%', marginBottom: '16px' }}>
                             <Avatar src={post.author.avatar} size={50} style={{ marginRight: '16px' }} />
                             <Flex vertical style={{ width: '100%' }} gap="8px">
                                 <Input.TextArea
@@ -126,10 +144,16 @@ export default function PostPage() {
                                 </Flex>
                             </Flex>
                         </Flex>
+                        <List
+                            itemLayout="horizontal"
+                            dataSource={comments}
+                            renderItem={(item) => (
+                                <CommentCard key={item.id} comment={item} />
+                            )}
+                        />
                     </Flex>
                     <Divider />
                     { /* Render comments here */}
-                    <Divider />
                     <Typography.Title level={4}>Related Posts</Typography.Title>
                     <Row gutter={[16, 16]}>
                         <Col key={post._id} xs={24} sm={24} md={24} lg={24}>
