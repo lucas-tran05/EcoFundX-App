@@ -1,9 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import { Layout, Menu, Button, List, Avatar, Tag, Space, Typography, Badge, Flex, Row, Col } from 'antd';
-import { HomeOutlined, CompassOutlined, BookOutlined, UserOutlined, PlusOutlined } from '@ant-design/icons';
+import {  Menu, List, Avatar, Tag, Space, Typography, Badge, Row, Col } from 'antd';
+import { HomeOutlined, CompassOutlined, BookOutlined } from '@ant-design/icons';
 import type { MenuProps } from 'antd';
-import PostsCard from '@/components/card/PostsCard';
 import Link from 'next/link';
 
 const { Title, Text } = Typography;

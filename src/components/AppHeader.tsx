@@ -44,9 +44,11 @@
             <Layout.Header style={{ padding: '0 40px', backgroundColor: 'var(--background-primary)', alignContent: 'center' }}>
                 <Flex align="center" justify="space-between">
                     <Flex>
-                        <Typography.Title level={3} style={{ fontWeight: 'bold', margin: 0 }}>
-                            <span style={{ color: 'var(--primary-color)' }}>Ecofund</span>X
-                        </Typography.Title>
+                        <Link href={'/'}>
+                            <Typography.Title level={3} style={{ fontWeight: 'bold', margin: 0 }}>
+                                <span style={{ color: 'var(--primary-color)' }}>Ecofund</span>X
+                            </Typography.Title>
+                        </Link>
                     </Flex>
 
                     {!isMobile ? (
