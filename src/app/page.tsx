@@ -33,7 +33,7 @@ export default function HomePage() {
             title: "Project 1",
             tag: "Renewable energy",
             description: "Description of project 1",
-            image: "/images/home.svg",
+            image: "/images/post.png",
             endDate: new Date("2026-12-31"),
             progress: 50,
             amount: 1000000,
@@ -55,7 +55,7 @@ export default function HomePage() {
             title: "Project 3",
             tag: "Renewable energy",
             description: "Description of project 3",
-            image: "/images/home.svg",
+            image: "/images/post.png",
             endDate: new Date("2026-2-28"),
             progress: 25,
             amount: 500000,
@@ -109,9 +109,11 @@ export default function HomePage() {
                         </Typography.Paragraph>
                         <Flex gap={16} style={{ marginTop: "32px" }}>
                             <Button type="primary" size="large">
-                                Get Started
+                                <Link href="/create/step-1">Get Started</Link>
                             </Button>
-                            <Button type="default" size="large">
+                            <Button type="default" size="large" onClick={() => { 
+                                scrollTo({ top: window.innerHeight, behavior: 'smooth' })
+                            }}>
                                 Learn More
                             </Button>
                         </Flex>
@@ -196,7 +198,7 @@ export default function HomePage() {
                                 size="large"
                                 style={{ width: "100%", marginTop: "24px" }}
                             >
-                                Start Funding Now
+                                <Link href="/create/step-1">Start Funding Now</Link>
                             </Button>
                         </Card>
                     </Col>
@@ -204,17 +206,17 @@ export default function HomePage() {
                         <Card style={{ padding: "24px", textAlign: "left" }}>
                             <FaChartLine style={{ fontSize: "48px", color: "var(--tertiary-color)" }} />
                             <Typography.Title level={4} style={{ fontWeight: "bold", marginTop: "16px" }}>
-                                Call for Funding for the Project
+                                For Investors
                             </Typography.Title>
                             <Flex vertical gap="small" style={{ marginTop: "16px" }}>
                                 <Typography.Text style={{ color: "var(--text-secondary)", display: "block" }}>
-                                    <FaCheck style={{ color: "var(--tertiary-color)" }} /> Easy Registration
+                                    <FaCheck style={{ color: "var(--tertiary-color)" }} /> Diverse project portfolio
                                 </Typography.Text>
                                 <Typography.Text style={{ color: "var(--text-secondary)", display: "block" }}>
-                                    <FaCheck style={{ color: "var(--tertiary-color)" }} /> Approaching Potential Investors
+                                    <FaCheck style={{ color: "var(--tertiary-color)" }} /> Investments with social impact
                                 </Typography.Text>
                                 <Typography.Text style={{ color: "var(--text-secondary)", display: "block" }}>
-                                    <FaCheck style={{ color: "var(--tertiary-color)" }} /> Project Development Support
+                                    <FaCheck style={{ color: "var(--tertiary-color)" }} /> Track investment performance
                                 </Typography.Text>
                             </Flex>
                             <Button
@@ -222,7 +224,7 @@ export default function HomePage() {
                                 size="large"
                                 style={{ width: "100%", marginTop: "24px", backgroundColor: "var(--tertiary-color)" }}
                             >
-                                Start Funding Now
+                                <Link href="/projects" >Explore opportunities</Link>
                             </Button>
                         </Card>
                     </Col>
@@ -265,7 +267,7 @@ export default function HomePage() {
                 </Typography.Paragraph>
                 <Space>
                     <Button type="primary" size="large">
-                        <Link href="/create">Start Funding</Link>
+                        <Link href="/create/step-1">Start Funding</Link>
                     </Button>
                     <Button type="default" size="large">
                         <Link href="/projects">Explore Projects</Link>

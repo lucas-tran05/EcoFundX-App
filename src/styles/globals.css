@@ -70,3 +70,8 @@
     background-color: var(--primary-color) !important;
     color: var(--background-primary) !important;
 }
+
+/* .ant-steps-item-finish .ant-steps-item-icon{
+    background-color: var(--primary-color) !important;
+    color: var(--text-primary) !important;
+} */

@@ -14,7 +14,10 @@ const theme: ThemeConfig = {
         },
         Menu: {
             colorPrimary: 'var(--primary-color)',
-        }
+        },
+        Steps: {
+            colorPrimary: 'var(--primary-color)',
+        },
     },
 };
 
