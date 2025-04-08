@@ -1,8 +1,9 @@
 'use client';
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import ProjectsCard from "@/components/card/ProjectsCard";
-import { Layout, Typography, Flex, Row, Col, Button, Card } from "antd";
+import { Layout, Typography, Flex, Row, Col, Button, Card, Space } from "antd";
 import { FaRocket, FaCheck, FaChartLine, FaRegQuestionCircle, FaSeedling, FaHandshake } from "react-icons/fa";
 
 export default function HomePage() {
@@ -171,8 +172,8 @@ export default function HomePage() {
             </Flex>
             {/* More */}
 
-            <Flex align="middle" justify="center" style={{ padding: "64px", background: "var(--quaternary-color)"  }}>
-                <Row gutter={[32, 32]} style={{ width: "100%"}} >
+            <Flex align="middle" justify="center" style={{ padding: "64px", background: "var(--quaternary-color)" }}>
+                <Row gutter={[32, 32]} style={{ width: "100%" }} >
                     <Col xs={24} sm={24} md={12} lg={12}>
                         <Card style={{ padding: "24px", textAlign: "left" }}>
                             <FaRocket style={{ fontSize: "48px", color: "var(--primary-color)" }} />
@@ -184,7 +185,7 @@ export default function HomePage() {
                                     <FaCheck style={{ color: "var(--primary-color)" }} /> Easy Registration
                                 </Typography.Text>
                                 <Typography.Text style={{ color: "var(--text-secondary)", display: "block" }}>
-                                    <FaCheck style={{ color: "var(--primary-color)" }}  /> Approaching Potential Investors
+                                    <FaCheck style={{ color: "var(--primary-color)" }} /> Approaching Potential Investors
                                 </Typography.Text>
                                 <Typography.Text style={{ color: "var(--text-secondary)", display: "block" }}>
                                     <FaCheck style={{ color: "var(--primary-color)" }} /> Project Development Support
@@ -210,7 +211,7 @@ export default function HomePage() {
                                     <FaCheck style={{ color: "var(--tertiary-color)" }} /> Easy Registration
                                 </Typography.Text>
                                 <Typography.Text style={{ color: "var(--text-secondary)", display: "block" }}>
-                                    <FaCheck style={{ color: "var(--tertiary-color)" }}  /> Approaching Potential Investors
+                                    <FaCheck style={{ color: "var(--tertiary-color)" }} /> Approaching Potential Investors
                                 </Typography.Text>
                                 <Typography.Text style={{ color: "var(--text-secondary)", display: "block" }}>
                                     <FaCheck style={{ color: "var(--tertiary-color)" }} /> Project Development Support
@@ -227,7 +228,7 @@ export default function HomePage() {
                     </Col>
                 </Row>
             </Flex>
-                
+
             {/* Projects Section */}
             <Flex vertical gap="large" style={{ padding: "64px" }} >
                 <Typography.Title level={2} style={{ textAlign: "center", fontWeight: "bold" }} ellipsis={{ rows: 1 }}>
@@ -236,23 +237,41 @@ export default function HomePage() {
                 <Row gutter={[32, 32]} justify="center" style={{ width: "100%" }}>
                     {projects.map((project) => (
                         <Col xs={24} sm={24} md={8} lg={8}>
-                        <ProjectsCard
-                            key={project.id}
-                            _id={project.id}
-                            title={project.title}
-                            tag={project.tag}
-                            description={project.description}
-                            image={project.image}
-                            endDate={project.endDate}
-                            progress={project.progress}
-                            amount={project.amount}
-                            onClick={project.onClick}
-                        />
+                            <ProjectsCard
+                                key={project.id}
+                                _id={project.id}
+                                title={project.title}
+                                tag={project.tag}
+                                description={project.description}
+                                image={project.image}
+                                endDate={project.endDate}
+                                progress={project.progress}
+                                amount={project.amount}
+                                onClick={project.onClick}
+                            />
                         </Col>
                     ))}
                 </Row>
             </Flex>
-
+            {/* Footer Section */}
+            <Flex vertical justify="center" align="center" gap="large" style={{ padding: "64px", background: "var(--quaternary-color)" }}>
+                <Typography.Title level={2} style={{ fontWeight: "bold" }} ellipsis={{ rows: 1 }}>
+                    Ready to contribute to a greener future?
+                </Typography.Title>
+                <Typography.Paragraph style={{ color: "var(--text-secondary)" }}>
+                    Be part of the solution. Invest in a sustainable future and make a difference.
+                    <br />
+                    Sign up now to start your journey towards a greener tomorrow.
+                </Typography.Paragraph>
+                <Space>
+                    <Button type="primary" size="large">
+                        <Link href="/create">Start Funding</Link>
+                    </Button>
+                    <Button type="default" size="large">
+                        <Link href="/projects">Explore Projects</Link>
+                    </Button>
+                </Space>
+            </Flex>
         </Layout.Content>
     );
 }

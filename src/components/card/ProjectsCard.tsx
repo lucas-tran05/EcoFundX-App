@@ -25,7 +25,7 @@ export default function ProjectsCard({
     endDate = new Date(),
     progress = 0,
     amount = 0,
-    image = "/solar-panels.jpg",
+    image = "/images/post.png",
     onClick
 }: ProjectsCardProps) {
 
