@@ -4,8 +4,7 @@ import AppFooter from '@/components/AppFooter';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import '../styles/globals.css';
-import theme from '../styles/themeConfig'; 
-
+import theme from '../styles/themeConfig';
 
 export const metadata: Metadata = {
     title: 'EcofundX',
@@ -21,16 +20,17 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <ConfigProvider theme={theme}>
-            <html lang="en" suppressHydrationWarning>
-                <body>
-                    <AntdRegistry >
-                        <AppHeader />
-                            {children}
-                        <AppFooter />
+        <html lang="en" suppressHydrationWarning>
+            <head>
+                <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet" />
+            </head>
+            <body>
+                <ConfigProvider theme={theme}>
+                    <AntdRegistry>
+                        {children}
                     </AntdRegistry>
-                </body>
-            </html>
-        </ConfigProvider>
+                </ConfigProvider>
+            </body>
+        </html>
     );
 }

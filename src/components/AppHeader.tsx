@@ -42,7 +42,7 @@
 
         return (
             <Layout.Header style={{ padding: '0 40px', backgroundColor: 'var(--background-primary)', alignContent: 'center' }}>
-                <Flex align="center" justify="space-between">
+                <Flex align="center" justify={window.innerWidth < 768 ? "space-between" : "space-around"}>
                     <Flex>
                         <Link href={'/'}>
                             <Typography.Title level={3} style={{ fontWeight: 'bold', margin: 0 }}>
