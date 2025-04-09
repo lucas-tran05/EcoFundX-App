@@ -5,12 +5,14 @@ const theme: ThemeConfig = {
     token: {
         fontSize: 16,
         colorPrimary: 'var(--primary-color)',
+        borderRadius: 12,
     },
     components: {
         Button: {
             colorPrimary: 'var(--primary-color)', 
             colorPrimaryHover: 'var(--primary-color)', 
             colorPrimaryActive: 'var(--primary-color)', 
+            
         },
         Menu: {
             colorPrimary: 'var(--primary-color)',
