@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Link from 'next/link';
 import { Layout, Row, Col, Button, Typography, Progress, Card, Divider, Space, Avatar, Collapse, Input, List } from "antd";
 import { LinkedinOutlined, TwitterOutlined, GlobalOutlined, SafetyOutlined, WarningOutlined, DownOutlined, SendOutlined } from '@ant-design/icons';
 import type { ProgressProps } from 'antd';
@@ -239,7 +240,7 @@ const ProjectView: FC = () => {
                                     </Col>
                                 </Row>
                                 <Button disabled={project?.progress === 100} type="primary" size="large" block style={{ marginTop: '16px' }}>
-                                    Contribute now
+                                    <Link href={`/projects/${project?.id}/contribute/amount`}>Contribute now</Link>
                                 </Button>
                                 <Divider />
                                 <Row >

@@ -3,7 +3,7 @@ import './globals.css';
 
 const theme: ThemeConfig = {
     token: {
-        fontSize: 16,
+        fontSize: 14,
         colorPrimary: 'var(--primary-color)',
         borderRadius: 12,
     },
@@ -24,6 +24,10 @@ const theme: ThemeConfig = {
             colorPrimary: 'var(--primary-color)',
             colorPrimaryHover: 'var(--primary-color)',
         },
+        Radio: {
+            colorPrimary: 'var(--primary-color)',
+            colorPrimaryHover: 'var(--primary-color)',
+        }
     },
 };
 
