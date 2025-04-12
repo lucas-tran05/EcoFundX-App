@@ -10,13 +10,6 @@ const { Text, Paragraph} = Typography;
 
 const AccountTypePage: React.FC = () => {
     return (
-        <ConfigProvider
-            theme={{
-                token: {
-                    colorPrimary: '#52c41a', 
-                },
-            }}
-        >
         <Card
             style={{
                 maxWidth: 860,
@@ -110,7 +103,6 @@ const AccountTypePage: React.FC = () => {
                 <Link href="/login" style={{ color: 'var(--primary-color)' }}>Log in here</Link>
             </Paragraph>
         </Card>
-        </ConfigProvider>
     );
 };
 

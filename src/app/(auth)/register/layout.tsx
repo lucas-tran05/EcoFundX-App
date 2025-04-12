@@ -8,11 +8,10 @@ const { Title, Text } = Typography;
 const LayoutRegister: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     return (
         <Layout style={{ minHeight: '100vh', backgroundColor: '#ffffff' }}>
-
             {/* Header */}
             <Header style={{ backgroundColor: '#ffffff', textAlign: 'center', padding: '20px 0' }}>
-                <Title level={3} style={{ fontSize: '40px', color: '#51A27F', margin: 0 }}>EcoFundX</Title>
-                <Text style={{ fontSize: '16px', color: '#888' }}>Join our sustainable crowdfunding community</Text>
+                <Title level={3} style={{ fontSize: '40px', color: 'var(--primary-color)', margin: 0 }}>EcoFundX</Title>
+                <Text style={{ fontSize: '16px', color: 'var(--text-secondary)', margin: '8px 0' }}>Join our sustainable crowdfunding community</Text>
             </Header>
 
             {/* Main Content */}

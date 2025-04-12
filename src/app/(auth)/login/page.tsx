@@ -5,7 +5,6 @@ const Login: FC = () => {
     return (
         <footer>
             <h1>Login
-            
             </h1>
         </footer>
     );

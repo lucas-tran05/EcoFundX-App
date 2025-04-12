@@ -179,7 +179,7 @@ export default function HomePage() {
                 {/* More */}
 
                 <Flex align="middle" justify="center" style={{ padding: "64px", background: "var(--quaternary-color)" }}>
-                    <Row gutter={[32, 32]} style={{ width: "100%" }} >
+                    <Row gutter={[32, 32]} style={{ width: "100%" }}>
                         <Col xs={24} sm={24} md={12} lg={12}>
                             <Card style={{ padding: "24px", textAlign: "left" }}>
                                 <FaRocket style={{ fontSize: "48px", color: "var(--primary-color)" }} />

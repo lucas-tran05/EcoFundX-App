@@ -19,7 +19,7 @@ export default function Error({
     }, [error]);
 
     return (
-        <Layout style={{ minHeight: '95vh', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+        <Layout style={{ minHeight: '100vh', padding: '32px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
             <Image
                 src="/images/error.png"
                 alt="Error"

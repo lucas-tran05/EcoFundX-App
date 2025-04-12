@@ -14,25 +14,6 @@ const RegistrationPage = () => {
   };
 
   return (
-    <ConfigProvider
-        theme={{
-            token: {
-                colorPrimary: '#52c41a', 
-            },
-            components: {
-                Input: { 
-                    hoverBorderColor: 'var(--primary-color)',   
-                    activeBorderColor: 'var(--primary-color)',  
-                    paddingBlock: 6,
-                    paddingInline: 12,
-                },
-                Form: { 
-                    itemMarginBottom: 15,
-                    labelFontSize: 14, 
-                }
-            },
-        }}
-    >
       <Card
         style={{
             maxWidth: 860,
@@ -136,7 +117,6 @@ const RegistrationPage = () => {
                 <Link href="/login" style={{ color: 'var(--primary-color)' }}>Log in here</Link>
             </Paragraph>
       </Card>
-    </ConfigProvider>
   );
 };
 

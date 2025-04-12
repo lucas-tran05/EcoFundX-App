@@ -88,25 +88,7 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
 
 
   return (
-    <ConfigProvider
-        theme={{
-            token: {
-                colorPrimary: '#52c41a', 
-            },
-            components: {
-                Input: {
-                    hoverBorderColor: 'var(--primary-color)',
-                    activeBorderColor: 'var(--primary-color)',
-                    paddingBlock: 8,
-                    paddingInline: 12,
-                },
-                Form: {
-                    itemMarginBottom: 18,
-                    labelFontSize: 14,
-                },
-            },
-        }}
-    >
+    
       <Card
         style={{
             maxWidth: 860,
@@ -229,7 +211,6 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
             <Link href="/login" style={{ color: 'var(--primary-color)' }}>Log in here</Link>
         </Paragraph>
       </Card>
-    </ConfigProvider>
   );
 };
 
