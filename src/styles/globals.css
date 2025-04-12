@@ -17,6 +17,7 @@
     --background-primary: #ffffff;
     --background-secondary: #f9fafb;
     --background-tertiary: #f3f4f6;
+    --background-quaternary: #f6ffed;
 
     /* background gradient */
     --background-gradient: linear-gradient(90deg, #ECFDF5 0%, #EFF6FF 100%);

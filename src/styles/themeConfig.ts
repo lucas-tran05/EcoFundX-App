@@ -5,7 +5,7 @@ const theme: ThemeConfig = {
     token: {
         fontSize: 16,
         colorPrimary: 'var(--primary-color)',
-        borderRadius: 12,
+        borderRadius: 8,
     },
     components: {
         Button: {
