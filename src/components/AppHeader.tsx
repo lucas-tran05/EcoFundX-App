@@ -87,7 +87,7 @@
                     {!isMobile && (
                         <Flex gap={16}>
                             <Button type="primary" size="large">
-                                <Link href="/register">Register</Link>
+                                <Link href="/register/basicInfo">Register</Link>
                             </Button>
                             <Button type="default" size="large">
                                 <Link href="/login">Login</Link>
