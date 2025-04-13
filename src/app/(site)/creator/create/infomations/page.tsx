@@ -43,7 +43,7 @@ const ProjectInformationForm: React.FC = () => {
                     form={form}
                     layout="vertical"
                     onFinish={onFinish}
-                    style={{ padding: '24px'}}
+                    style={{ padding: '8px'}}
                 >
                     <Form.Item
                         name="projectTitle"

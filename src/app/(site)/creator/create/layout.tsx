@@ -19,7 +19,7 @@ export default function CreateLayout({ children }: { children: React.ReactNode }
     }
 
     return (
-        <Row gutter={[24, 24]} align="middle" justify="center" style={{ padding: '32px', margin: 0 }}>
+        <Row gutter={[24, 24]} align="middle" justify="center" style={{ padding: '16px', margin: 0 }}>
             <Col xs={24} sm={24} md={24} lg={18} xl={18}>
                 <Steps
                     current={currentStep}

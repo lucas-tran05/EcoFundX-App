@@ -205,7 +205,7 @@ const ProjectView: FC = () => {
                 <Card style={{ width: '100%' }}>
                     <Row gutter={[24, 24]}>
                         <Col xs={24} sm={24} md={16} lg={14}>
-                            <Layout.Content style={{ background: '#fff', padding: '24px', minHeight: 280 }}>
+                            <Layout.Content style={{padding: '24px' }}>
                                 <img src={project?.image} alt={project?.title} style={{ width: '100%', marginBottom: '24px' }} />
                                 <Typography.Title level={4} ellipsis={{ rows: 2, expandable: true }}>{project?.title}</Typography.Title>
                                 <Typography.Paragraph ellipsis={{ rows: 5, expandable: true }}>
@@ -215,7 +215,7 @@ const ProjectView: FC = () => {
                             </Layout.Content>
                         </Col>
                         <Col xs={24} sm={24} md={8} lg={10}>
-                            <Layout.Content style={{ background: '#fff', padding: '24px', minHeight: 280 }}>
+                            <Layout.Content style={{ padding: '24px' }}>
                                 <Row align={"middle"}>
                                     <Col span={12}>
                                         <Typography.Title level={4} style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>
