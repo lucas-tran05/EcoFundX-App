@@ -171,7 +171,7 @@ const Register: FC = () => {
     ];
 
     return (
-        <Layout.Content style={{ padding: '50px' }}>
+        <Layout.Content style={{ padding: '32px' }}>
             <Row justify="space-between" align="middle" gutter={[16, 16]}>
                 <Col xs={24} sm={24} md={10} lg={10}>
                     <Input.Search
@@ -188,7 +188,6 @@ const Register: FC = () => {
                             defaultValue="renewable"
                             size="large"
                             style={{ width: '100%' }}
-                            // onChange={handleChange}
                             options={[
                                 { value: 'renewable', label: 'Renewable energy' },
                                 { value: 'education', label: 'Education' }
@@ -199,7 +198,7 @@ const Register: FC = () => {
                 </Col>
             </Row>
 
-            <Row gutter={[32, 32]} justify="center" style={{ width: "100%", marginTop: '30px' }}>
+            <Row gutter={[16, 16]} justify="center" align="middle" style={{ width: "100%", marginTop: '30px' }}>
                 {projects.map((project) => (
                     <Col xs={24} sm={24} md={8} lg={8}>
                         <ProjectsCard

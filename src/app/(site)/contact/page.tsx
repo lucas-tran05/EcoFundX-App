@@ -51,7 +51,7 @@ const ContactForm: React.FC = () => {
                 </Flex>
             </Row>
 
-            <Row gutter={[16, 16]} style={{ width: window.innerWidth < 768 ? '90%' : '80%' }} align="top" justify="center">
+            <Row gutter={[32, 32]} style={{ width: window.innerWidth < 768 ? '90%' : '80%' }} align="top" justify="center">
                 {/* Contact Info Column */}
                 <Col xs={24} sm={24} md={14} lg={8} >
                     <Card>

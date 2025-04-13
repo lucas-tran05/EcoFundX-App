@@ -74,7 +74,7 @@ export default function PostPage() {
     return (
         <Row gutter={[16, 16]} align="middle" justify="center" style={{ padding: '8px', margin: 0 }}>
             <Col xs={24} sm={24} md={16} lg={16}>
-                <Card style={{ padding: '24px' }}>
+                <Card style={{ padding: '8px' }}>
                     <Flex align="center" justify="space-between" style={{ marginBottom: '16px' }}>
                         <Tag color="blue">{post.tag}</Tag>
                         <FaRegBookmark />

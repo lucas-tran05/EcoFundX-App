@@ -136,7 +136,7 @@ export default function HomePage() {
                 </Row>
 
                 {/* Benefits Section */}
-                <Flex vertical gap="large" style={{ padding: "64px" }} >
+                <Flex vertical gap="large" style={{ padding: "32px" }} >
                     <Typography.Title level={2} style={{ textAlign: "center", fontWeight: "bold" }}>
                         Benefits of the platform
                     </Typography.Title>
@@ -178,8 +178,8 @@ export default function HomePage() {
                 </Flex>
                 {/* More */}
 
-                <Flex align="middle" justify="center" style={{ padding: "64px", background: "var(--quaternary-color)" }}>
-                    <Row gutter={[32, 32]} style={{ width: "100%" }}>
+                <Flex align="middle" justify="center" style={{ padding: "32px", background: "var(--quaternary-color)" }}>
+                    <Row gutter={[16, 16]} style={{ width: "100%" }}>
                         <Col xs={24} sm={24} md={12} lg={12}>
                             <Card style={{ padding: "24px", textAlign: "left" }}>
                                 <FaRocket style={{ fontSize: "48px", color: "var(--primary-color)" }} />
@@ -236,11 +236,11 @@ export default function HomePage() {
                 </Flex>
 
                 {/* Projects Section */}
-                <Flex vertical gap="large" style={{ padding: "64px" }} >
+                <Flex vertical gap="large" align="center" style={{ padding: "32px" }} >
                     <Typography.Title level={2} style={{ textAlign: "center", fontWeight: "bold" }} ellipsis={{ rows: 1 }}>
                         Featured Projects
                     </Typography.Title>
-                    <Row gutter={[32, 32]} justify="center" style={{ width: "100%" }}>
+                    <Row gutter={[16, 16]} justify="center" style={{ width: "100%" }}>
                         {projects.map((project) => (
                             <Col xs={24} sm={24} md={8} lg={8}>
                                 <ProjectsCard

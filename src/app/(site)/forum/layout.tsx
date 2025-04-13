@@ -102,7 +102,7 @@ export default function ForumLayout({
     ];
 
     return (
-        <Row gutter={[32, 32]} style={{ minHeight: '100vh', padding: '12px 64px', margin: 0 }}>
+        <Row gutter={[32, 32]} style={{ minHeight: '100vh', padding: '12px', margin: 0 }}>
             <Col xs={24} sm={24} md={0} lg={0} xl={0}>
                 <Menu
                     mode="horizontal"

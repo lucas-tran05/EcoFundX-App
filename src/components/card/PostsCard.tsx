@@ -41,7 +41,7 @@ export default function PostsCard({
     return (
         <List.Item
             key={_id}
-            style={{ padding: '32px', marginBottom: '16px', border: '1px solid #f0f0f0', borderRadius: '8px' }}
+            style={{ padding: '24px', marginBottom: '16px', border: '1px solid #f0f0f0', borderRadius: '8px' }}
             actions={[
                 <Space key="replies">
                     <MessageOutlined />

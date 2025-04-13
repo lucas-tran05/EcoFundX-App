@@ -38,7 +38,6 @@ const AgreementPage: React.FC = () => {
             {/* Terms of Service */}
             <Card
                 style={{ marginBottom: '16px', backgroundColor: '#f9f9f9' }}
-                bodyStyle={{ padding: '16px' }}
             >
                 <Title level={5}>Terms of Service</Title>
                 <Paragraph>
