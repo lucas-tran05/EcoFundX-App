@@ -49,9 +49,10 @@ const AccountTypePage: React.FC = () => {
                         hoverable
                         onClick={() => handleSelectType('creator')}
                         style={{
-                            border: selectedType === 'creator' ? '2px solid var(--primary-color)' : '1px solid var(--text-tertiary)', 
+                            border: selectedType === 'creator' ? '2px solid var(--primary-color)' : '1px solid var(--border-color)', 
                             backgroundColor: selectedType === 'creator' ? 'var(--background-quaternary)' : 'var(--background-primary)',
-                            cursor: 'pointer' 
+                            cursor: 'pointer',
+                            boxShadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09)'
                         }}
                     >
                         <Space size="middle" align="center">
@@ -72,12 +73,11 @@ const AccountTypePage: React.FC = () => {
                 <Col xs={24} sm={24} md={12} lg={12}>
                     <Card
                         hoverable
-                        // Thêm onClick và style động
                         onClick={() => handleSelectType('investor')}
                         style={{
-                            // Thay đổi border nếu được chọn
-                            border: selectedType === 'investor' ? '2px solid var(--primary-color)' : '1px solid var(--text-tertiary)',
+                            border: selectedType === 'investor' ? '2px solid var(--primary-color)' : '1px solid var(--border-color)',
                             backgroundColor: selectedType === 'investor' ? 'var(--background-quaternary)' : 'var(--background-primary)',
+                            boxShadow: '0 1px 2px -2px rgba(0, 0, 0, 0.16), 0 3px 6px 0 rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09)',
                             cursor: 'pointer'
                         }}
                     >
@@ -97,26 +97,22 @@ const AccountTypePage: React.FC = () => {
                     </Card>
                 </Col>
             </Row>
-            {/* Kết thúc thay đổi Account Type Selection */}
 
-            {/* Navigation Buttons - Thay đổi ở đây */}
+            {/* Navigation Buttons*/}
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '60px' }}>
-                {/* Nút Back vẫn dùng Link */}
                 <Link href="/register/basicInfo">
                     <Button type="text" >← Back</Button>
                 </Link>
-                {/* Nút Continue dùng Button thường, thêm onClick và disabled */}
                 <Button
                     type="primary"
                     onClick={handleContinue}
-                    disabled={!selectedType} // Vô hiệu hóa nếu selectedType là null
+                    disabled={!selectedType}
                 >
                     Continue →
                 </Button>
             </div>
-             {/* Kết thúc thay đổi Navigation Buttons */}
 
-            {/* ... (Phần Social Media và Login Link không thay đổi) ... */}
+            {/*Social Media and Login Link */}
             <Divider style={{ marginTop: '30px'}}>Or sign up with</Divider>
             <Row justify="center" gutter={[16, 10]} >
                 <Col xs={24} sm={6} md={6} lg={6}>
