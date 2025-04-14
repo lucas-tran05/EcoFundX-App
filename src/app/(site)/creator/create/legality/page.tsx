@@ -98,12 +98,12 @@ const AgreementPage: React.FC = () => {
             </Checkbox>
 
             <Space style={{ width: '100%', justifyContent: 'space-between' }}>
-                <Link href="/create/rewards">
+                <Link href="/creator/create/rewards">
                     <Button icon={<ArrowLeftOutlined />}  onClick={handleBack}>
                         Back
                     </Button>
                 </Link>
-                <Link href="/create/review">
+                <Link href="/creator/create/review">
                     <Button type="primary" icon={<ArrowRightOutlined />}  onClick={handleNext} disabled={!allAgreed}>
                         Next
                     </Button>

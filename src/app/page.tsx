@@ -113,7 +113,7 @@ export default function HomePage() {
                             </Typography.Paragraph>
                             <Flex gap={16} style={{ marginTop: "32px" }}>
                                 <Button type="primary" size="large">
-                                    <Link href="/create/infomations">Get Started</Link>
+                                    <Link href="/creator/create/infomations">Get Started</Link>
                                 </Button>
                                 <Button type="default" size="large" onClick={() => {
                                     scrollTo({ top: window.innerHeight, behavior: 'smooth' })
@@ -132,7 +132,7 @@ export default function HomePage() {
                             height={300}
                             style={{ width: "100%", height: "auto" }}
                         />
-                    </Col>
+                    </Col> 
                 </Row>
 
                 {/* Benefits Section */}

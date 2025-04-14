@@ -43,7 +43,6 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
       return;
     }
     if (info.file.status === 'done') {
-      // Get this url from response in real world.
       getBase64(info.file.originFileObj as RcFile, url => {
         setLoading(false);
         setImageUrl(url);
@@ -70,17 +69,14 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
 
   // --- Handler for removing photo ---
   const handleRemovePhoto = (e: React.MouseEvent) => {
-      e.preventDefault(); // Prevent default link behavior if using <a>
-      setImageUrl(undefined); // Clear the image URL state
-      // If using Form instance directly, you might need to reset the form field value too
-      // form.setFieldsValue({ avatar: null });
+      e.preventDefault(); 
+      setImageUrl(undefined); 
       message.info('Photo removed.');
   };
 
   // --- Upload Button UI ---
   const uploadButton = (
     <button style={{ border: 0, background: 'none', cursor: 'pointer' }} type="button">
-      {/* You might want to style this button further or use an Ant Button */}
       <UploadOutlined />
       <div style={{ marginTop: 8 }}>Upload</div>
     </button>
@@ -114,7 +110,7 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
                         listType="picture-circle"
                         className="avatar-uploader"
                         showUploadList={false}
-                        action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188" // Mocky endpoint for testing
+                        action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188" 
                         beforeUpload={beforeUpload}
                         onChange={handleUploadChange}
                       >
@@ -173,15 +169,15 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
                 </Checkbox>
             </Form.Item>
 
-             {/* Navigation Buttons */}
+
             {/* Navigation Buttons */}
             <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '60px' }}>
                 <Link href="/register/accountType">
                     <Button type="text" >← Back</Button>
                 </Link>
-                <Link href="/#">
-                    <Button type="primary">Continue →</Button>
-                </Link>
+                <Button type="primary" htmlType="submit">
+                    Continue →
+                </Button>
             </div>
         </Form>
 
