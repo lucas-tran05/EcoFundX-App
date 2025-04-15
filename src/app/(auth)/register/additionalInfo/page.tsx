@@ -62,10 +62,6 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
       message.success('Registration Submitted!');
   };
 
-  // --- Handler for Back button (Placeholder) ---
-  const handleBack = () => {
-      console.log('Navigate back to previous step');
-  };
 
   // --- Handler for removing photo ---
   const handleRemovePhoto = (e: React.MouseEvent) => {
