@@ -116,7 +116,7 @@ const EditProfilePage: React.FC = () => {
                 >
                     {/* --- Profile Information Section --- */}
                     <Title level={4} style={{ marginBottom: '20px', fontWeight: 500 }}>Profile Information</Title>
-                    <Row gutter={24} style={{ marginBottom: '24px' }}>
+                    <Row gutter={[24, 24]} style={{ marginBottom: '24px' }}>
                         <Col>
                             <Avatar size={80} src="#" icon={<UserOutlined />} />
                         </Col>
@@ -173,7 +173,7 @@ const EditProfilePage: React.FC = () => {
                     {/* --- Contact & Security Section --- */}
                     <Title level={4} style={{ marginBottom: '20px', fontWeight: 500 }}>Contact & Security</Title>
                     <Form.Item label="Email Address" required>
-                        <Row gutter={8} align="middle">
+                        <Row gutter={[8, 8]} align="middle">
                             <Col flex="auto">
                             <Form.Item
                                 name="email"
@@ -195,7 +195,7 @@ const EditProfilePage: React.FC = () => {
                     </Form.Item>
 
                     <Form.Item label="Phone Number" required>
-                        <Row gutter={8} align="middle">
+                        <Row gutter={[8, 8]} align="middle">
                             <Col flex="auto">
                             <Form.Item
                                 name="phoneNumber"
