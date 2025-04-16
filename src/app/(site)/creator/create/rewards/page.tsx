@@ -160,8 +160,8 @@ const ProjectRewardsPage: React.FC = () => {
 
                 <Form.Item>
                     <Flex justify="space-between">
-                        <Link  href="/create/infomations"><Button icon={<ArrowLeftOutlined />}>Back</Button></Link>
-                        <Link  href="/create/legality"><Button type="primary" htmlType="submit">Save and Continue</Button></Link>
+                        <Link  href="/creator/create/infomations"><Button icon={<ArrowLeftOutlined />}>Back</Button></Link>
+                        <Link  href="/creator/create/legality"><Button type="primary" htmlType="submit">Save and Continue</Button></Link>
                     </Flex>
                 </Form.Item>
             </Form>
