@@ -1,8 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import {Card, Steps, Form, Input, Button, Divider, Typography,Row, Col,ConfigProvider,Upload,Checkbox,Space,message} from 'antd';
-import {GoogleOutlined,FacebookFilled,LinkedinFilled,UploadOutlined,TwitterOutlined} from '@ant-design/icons';
+import { Card, Steps, Form, Input, Button, Divider, Typography, Row, Col, ConfigProvider, Upload, Checkbox, Space, message } from 'antd';
+import { GoogleOutlined, FacebookFilled, LinkedinFilled, UploadOutlined, TwitterOutlined } from '@ant-design/icons';
 import Link from "next/link";
 import type { UploadChangeParam } from 'antd/es/upload';
 import type { RcFile, UploadFile, UploadProps } from 'antd/es/upload/interface';
@@ -11,7 +11,6 @@ const { Step } = Steps;
 const { Paragraph, Text } = Typography;
 const { TextArea } = Input;
 
-// --- Helper functions for Upload (Keep these or move to a utils file) ---
 const getBase64 = (img: RcFile, callback: (url: string) => void) => {
   const reader = new FileReader();
   reader.addEventListener('load', () => callback(reader.result as string));
@@ -34,7 +33,7 @@ const beforeUpload = (file: RcFile) => {
 
 const RegistrationAdditionalInfoPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const [imageUrl, setImageUrl] = useState<string>(); 
+  const [imageUrl, setImageUrl] = useState<string>();
 
   // --- Handler for Upload component state ---
   const handleUploadChange: UploadProps['onChange'] = (info: UploadChangeParam<UploadFile>) => {
@@ -51,36 +50,33 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
       });
     }
     if (info.file.status === 'error') {
-        setLoading(false);
-        message.error(`${info.file.name} file upload failed.`);
+      setLoading(false);
+      message.error(`${info.file.name} file upload failed.`);
     }
   };
 
   // --- Handler for Form submission ---
   const onFinish = (values: any) => {
-      const finalValues = { ...values, avatarUrl: imageUrl };
-      console.log('Form values:', finalValues);
-      message.success('Registration Submitted!');
+    const finalValues = { ...values, avatarUrl: imageUrl };
+    console.log('Form values:', finalValues);
+    message.success('Registration Submitted!');
   };
 
   // --- Handler for Back button (Placeholder) ---
   const handleBack = () => {
-      console.log('Navigate back to previous step');
+    console.log('Navigate back to previous step');
   };
 
   // --- Handler for removing photo ---
   const handleRemovePhoto = (e: React.MouseEvent) => {
-      e.preventDefault(); // Prevent default link behavior if using <a>
-      setImageUrl(undefined); // Clear the image URL state
-      // If using Form instance directly, you might need to reset the form field value too
-      // form.setFieldsValue({ avatar: null });
-      message.info('Photo removed.');
+    e.preventDefault(); 
+    setImageUrl(undefined); 
+    message.info('Photo removed.');
   };
 
   // --- Upload Button UI ---
   const uploadButton = (
     <button style={{ border: 0, background: 'none', cursor: 'pointer' }} type="button">
-      {/* You might want to style this button further or use an Ant Button */}
       <UploadOutlined />
       <div style={{ marginTop: 8 }}>Upload</div>
     </button>
@@ -88,129 +84,128 @@ const RegistrationAdditionalInfoPage: React.FC = () => {
 
 
   return (
-    
-      <Card
-        style={{
-            maxWidth: 860,
-            margin: '40px auto',
-            borderRadius: '8px',
-            boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
-        }}
-      >
 
-        <Steps current={2} size="small" style={{ marginBottom: '30px' }}>
-          <Step title="Account Type" />
-          <Step title="Basic Info" />
-          <Step title="Additional Info" />
-        </Steps>
+    <Card
+      style={{
+        maxWidth: 860,
+        margin: '40px auto',
+        borderRadius: '8px',
+        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.1)',
+      }}
+    >
 
-        {/* Form */}
-        <Form layout="vertical" onFinish={onFinish} >
+      <Steps current={2} size="small" style={{ marginBottom: '30px' }}>
+        <Step title="Account Type" />
+        <Step title="Basic Info" />
+        <Step title="Additional Info" />
+      </Steps>
 
-            {/* Photo Upload Section */}
-            <Form.Item label="Upload a photo" name="avatar" >
-                 <Space align="start" size="large">
-                     <Upload
-                        listType="picture-circle"
-                        className="avatar-uploader"
-                        showUploadList={false}
-                        action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188" // Mocky endpoint for testing
-                        beforeUpload={beforeUpload}
-                        onChange={handleUploadChange}
-                      >
-                        {imageUrl ? (
-                            <img src={imageUrl} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
-                         ) : (
-                             // Display loading state on the button itself
-                             loading ? <div>Loading...</div> : uploadButton
-                         )}
-                      </Upload>
-                      {/* Conditionally render Remove button only if there's an image */}
-                      {imageUrl && (
-                        <Button type="link" onClick={handleRemovePhoto} style={{ padding: '0', height: 'auto', lineHeight: 'inherit', marginTop: '8px', color: 'red'}}>
-                            Remove
-                        </Button>
-                      )}
-                 </Space>
-            </Form.Item>
+      {/* Form */}
+      <Form layout="vertical" onFinish={onFinish} >
 
-             {/* Bio Section */}
-            <Form.Item label="Bio" name="bio">
-                <TextArea rows={4} placeholder="Tell us a bit about yourself or your project..." />
-            </Form.Item>
-
-            {/* Social Media Links Section */}
-            <Text style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500'}}>Social Media Links</Text>
-            <Form.Item name="facebookUrl" >
-                <Input prefix={<FacebookFilled style={{ color: 'var(--tertiary-color)', marginRight: '8px' }} />} placeholder="Facebook profile URL" />
-            </Form.Item>
-            <Form.Item name="twitterUrl">
-                 <Input prefix={<TwitterOutlined style={{ color: 'var(--tertiary-color)', marginRight: '8px' }} />} placeholder="Twitter profile URL" />
-            </Form.Item>
-            <Form.Item name="linkedinUrl">
-                <Input prefix={<LinkedinFilled style={{ color: 'var(--tertiary-color)', marginRight: '8px' }} />} placeholder="LinkedIn profile URL" />
-            </Form.Item>
-
-            {/* Terms and Conditions Checkbox */}
-            <Form.Item
-                name="termsAccepted"
-                valuePropName="checked" 
-                rules={[
-                    {
-                        validator: (_, value) =>
-                        value ? Promise.resolve() : Promise.reject(new Error('Please accept the terms and conditions')),
-                    }
-                ]}
-                style={{ marginBottom: '30px' }} 
+        {/* Photo Upload Section */}
+        <Form.Item label="Upload a photo" name="avatar" >
+          <Space align="start" size="large">
+            <Upload
+              listType="picture-circle"
+              className="avatar-uploader"
+              showUploadList={false}
+              beforeUpload={beforeUpload}
+              onChange={handleUploadChange}
             >
-                <Checkbox>
-                    <Text style={{ fontSize: '13px', lineHeight: '1.4' }}> {/* Adjust font size */}
-                        Yes, I understand and agree to the EcofundX 
-                        <Link href="/terms" style={{ color: 'var(--primary-color)' }}>Terms of Service</Link>, including the 
-                        <Link href="/user-agreement" style={{ color: 'var(--primary-color)' }}>User Agreement</Link> and 
-                        <Link href="/privacy" style={{ color: 'var(--primary-color)' }}>Privacy Policy</Link>.
-                    </Text>
-                </Checkbox>
-            </Form.Item>
+              {imageUrl ? (
+                <img src={imageUrl} alt="avatar" style={{ width: '100%', height: '100%', borderRadius: '50%', objectFit: 'cover' }} />
+              ) : (
+                // Display loading state on the button itself
+                loading ? <div>Loading...</div> : uploadButton
+              )}
+            </Upload>
+            {/* Conditionally render Remove button only if there's an image */}
+            {imageUrl && (
+              <Button type="link" onClick={handleRemovePhoto} style={{ padding: '0', height: 'auto', lineHeight: 'inherit', marginTop: '8px', color: 'red' }}>
+                Remove
+              </Button>
+            )}
+          </Space>
+        </Form.Item>
 
-             {/* Navigation Buttons */}
-            {/* Navigation Buttons */}
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '60px' }}>
-                <Link href="/register/accountType">
-                    <Button type="text" >← Back</Button>
-                </Link>
-                <Link href="/#">
-                    <Button type="primary">Continue →</Button>
-                </Link>
-            </div>
-        </Form>
+        {/* Bio Section */}
+        <Form.Item label="Bio" name="bio">
+          <TextArea rows={4} placeholder="Tell us a bit about yourself or your project..." />
+        </Form.Item>
 
-        {/* Social Media Sign-Up */}
-        <Divider style={{ marginTop: '30px'}}>Or sign up with</Divider>
-        <Row justify="center" gutter={[16, 10]} >
-            <Col xs={24} sm={6} md={6} lg={6}>
-                <Button icon={<GoogleOutlined style={{ fontSize: 20 }}/>} size="large" block style={{ fontSize: '14px'}}>
-                Google
-                </Button>     
-            </Col>
-            <Col xs={24} sm={6} md={6} lg={6}>
-                <Button icon={<FacebookFilled style={{ fontSize: 20, color: 'var(--tertiary-color)' }}/>} size="large" block style={{ fontSize: '14px'}}>
-                Facebook
-                </Button>
-            </Col>
-            <Col xs={24} sm={6} md={6} lg={6}>
-                <Button icon={<LinkedinFilled style={{ fontSize: 20, color: 'var(--tertiary-color)' }}/>} size="large" block style={{ fontSize: '14px' }}>
-                Linkedln
-                </Button>
-            </Col>
-        </Row>
+        {/* Social Media Links Section */}
+        <Text style={{ display: 'block', marginBottom: '8px', fontSize: '14px', fontWeight: '500' }}>Social Media Links</Text>
+        <Form.Item name="facebookUrl" >
+          <Input prefix={<FacebookFilled style={{ color: 'var(--tertiary-color)', marginRight: '8px' }} />} placeholder="Facebook profile URL" />
+        </Form.Item>
+        <Form.Item name="twitterUrl">
+          <Input prefix={<TwitterOutlined style={{ color: 'var(--tertiary-color)', marginRight: '8px' }} />} placeholder="Twitter profile URL" />
+        </Form.Item>
+        <Form.Item name="linkedinUrl">
+          <Input prefix={<LinkedinFilled style={{ color: 'var(--tertiary-color)', marginRight: '8px' }} />} placeholder="LinkedIn profile URL" />
+        </Form.Item>
 
-        {/* Login Link */}
-        <Paragraph style={{ marginTop: '20px', textAlign: 'center' }}>
-            Already have an account?{' '}
-            <Link href="/login" style={{ color: 'var(--primary-color)' }}>Log in here</Link>
-        </Paragraph>
-      </Card>
+        {/* Terms and Conditions Checkbox */}
+        <Form.Item
+          name="termsAccepted"
+          valuePropName="checked"
+          rules={[
+            {
+              validator: (_, value) =>
+                value ? Promise.resolve() : Promise.reject(new Error('Please accept the terms and conditions')),
+            }
+          ]}
+          style={{ marginBottom: '30px' }}
+        >
+          <Checkbox>
+            <Text style={{ fontSize: '13px', lineHeight: '1.4' }}> {/* Adjust font size */}
+              Yes, I understand and agree to the EcofundX
+              <Link href="/terms" style={{ color: 'var(--primary-color)' }}>Terms of Service</Link>, including the
+              <Link href="/user-agreement" style={{ color: 'var(--primary-color)' }}>User Agreement</Link> and
+              <Link href="/privacy" style={{ color: 'var(--primary-color)' }}>Privacy Policy</Link>.
+            </Text>
+          </Checkbox>
+        </Form.Item>
+
+        {/* Navigation Buttons */}
+        {/* Navigation Buttons */}
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '60px' }}>
+          <Link href="/register/accountType">
+            <Button type="text" >← Back</Button>
+          </Link>
+          <Link href="/#">
+            <Button type="primary">Continue →</Button>
+          </Link>
+        </div>
+      </Form>
+
+      {/* Social Media Sign-Up */}
+      <Divider style={{ marginTop: '30px' }}>Or sign up with</Divider>
+      <Row justify="center" gutter={[16, 10]} >
+        <Col xs={24} sm={6} md={6} lg={6}>
+          <Button icon={<GoogleOutlined style={{ fontSize: 20 }} />} size="large" block style={{ fontSize: '14px' }}>
+            Google
+          </Button>
+        </Col>
+        <Col xs={24} sm={6} md={6} lg={6}>
+          <Button icon={<FacebookFilled style={{ fontSize: 20, color: 'var(--tertiary-color)' }} />} size="large" block style={{ fontSize: '14px' }}>
+            Facebook
+          </Button>
+        </Col>
+        <Col xs={24} sm={6} md={6} lg={6}>
+          <Button icon={<LinkedinFilled style={{ fontSize: 20, color: 'var(--tertiary-color)' }} />} size="large" block style={{ fontSize: '14px' }}>
+            Linkedln
+          </Button>
+        </Col>
+      </Row>
+
+      {/* Login Link */}
+      <Paragraph style={{ marginTop: '20px', textAlign: 'center' }}>
+        Already have an account?{' '}
+        <Link href="/login" style={{ color: 'var(--primary-color)' }}>Log in here</Link>
+      </Paragraph>
+    </Card>
   );
 };
 
