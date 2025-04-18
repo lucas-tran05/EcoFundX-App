@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
-import {Layout,Menu, Row, Col, Card, Typography, Button, Space,Table, Tag, Input, Avatar, Flex } from 'antd';
-import { WalletOutlined, HistoryOutlined, RedoOutlined, SafetyCertificateOutlined, PlusOutlined, ArrowRightOutlined, QrcodeOutlined, DollarCircleOutlined, LineChartOutlined, FieldTimeOutlined, SearchOutlined, FilterOutlined,} from '@ant-design/icons'; 
+import { Layout, Menu, Row, Col, Card, Typography, Button, Space, Table, Tag, Input, Avatar, Flex } from 'antd';
+import { WalletOutlined, HistoryOutlined, RedoOutlined, SafetyCertificateOutlined, PlusOutlined, ArrowRightOutlined, QrcodeOutlined, DollarCircleOutlined, LineChartOutlined, FieldTimeOutlined, SearchOutlined, FilterOutlined, } from '@ant-design/icons';
 import Link from 'next/link';
 import { FaSolarPanel } from "react-icons/fa6";
 import { MdForest } from "react-icons/md";
@@ -21,22 +21,22 @@ const accountData = {
 };
 
 const recentTransactionsData = [
-  {
-      key: '1',
-      project: { name: 'Solar Farm Project', icon: <FaSolarPanel style={{ color: 'var(--icon-primary-bg)', fontSize: '20px' }} /> },
-      type: 'Investment',
-      amount: 2500.00,
-      status: 'Completed',
-      date: 'Mar 10, 2025',
-  },
-  {
-      key: '2',
-      project: { name: 'Reforestation Initiative', icon: <MdForest style={{ color: 'var(--icon-secondary-bg)', fontSize: '20px' }} /> },
-      type: 'Withdrawal',
-      amount: -1200.00, 
-      status: 'Pending',
-      date: 'Mar 8, 2025',
-  },
+    {
+        key: '1',
+        project: { name: 'Solar Farm Project', icon: <FaSolarPanel style={{ color: 'var(--icon-primary-bg)', fontSize: '20px' }} /> },
+        type: 'Investment',
+        amount: 2500.00,
+        status: 'Completed',
+        date: 'Mar 10, 2025',
+    },
+    {
+        key: '2',
+        project: { name: 'Reforestation Initiative', icon: <MdForest style={{ color: 'var(--icon-secondary-bg)', fontSize: '20px' }} /> },
+        type: 'Withdrawal',
+        amount: -1200.00,
+        status: 'Pending',
+        date: 'Mar 8, 2025',
+    },
 ];
 
 
@@ -92,20 +92,20 @@ const WalletPage: React.FC = () => {
     const [collapsed, setCollapsed] = useState(false);
 
     return (
-        <Layout style={{ minHeight: '100vh', background: 'var(--background-primary)', marginTop: '30px', marginBottom: '30px'}}>
+        <Layout style={{ minHeight: '100vh', background: 'var(--background-primary)', marginTop: '30px', marginBottom: '30px' }}>
             {/* Sidebar */}
             <Sider
-                collapsible 
-                collapsed={collapsed} 
-                onCollapse={(value) => setCollapsed(value)} 
-                breakpoint="lg" 
-                collapsedWidth="80" 
+                collapsible
+                collapsed={collapsed}
+                onCollapse={(value) => setCollapsed(value)}
+                breakpoint="lg"
+                collapsedWidth="80"
                 onBreakpoint={(broken) => {
                     console.log('Breakpoint triggered:', broken);
-                    setCollapsed(broken); 
+                    setCollapsed(broken);
                 }}
                 theme="light"
-                style={{ borderRight: '1px solid var(--border-color)', height: '100vh' }} 
+                style={{ borderRight: '1px solid var(--border-color)', height: '100vh' }}
             >
                 <Menu theme="light" defaultSelectedKeys={['1']} mode="inline">
                     <Menu.Item key="1" icon={<FaWallet />}>
@@ -198,7 +198,7 @@ const WalletPage: React.FC = () => {
                         <Table
                             columns={columns}
                             dataSource={recentTransactionsData}
-                            pagination={false} 
+                            pagination={false}
                             size="middle"
                         />
 
