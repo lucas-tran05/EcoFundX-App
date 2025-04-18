@@ -38,7 +38,12 @@
     --footer-text: #ffffff;
 
     /* mau border */
-    --border-color: #ccc
+    --border-color: #ccc;
+
+    /* mau icon  */
+    --icon-primary-bg: #3662E3;
+    --icon-secondary-bg: #8658E7;
+    --icon-tertiary-bg: #D9622A;
 }
 
 /* Dark Mode */
