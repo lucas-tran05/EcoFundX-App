@@ -123,7 +123,7 @@ const ProjectReviewPage: React.FC = () => {
                 <Divider />
 
                 <Row justify="space-between">
-                    <Link href="/create/legality">
+                    <Link href="/creator/create/legality">
                         <Button icon={<ArrowLeftOutlined />} >
                             Back
                         </Button>

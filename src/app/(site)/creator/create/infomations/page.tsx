@@ -109,7 +109,7 @@ const ProjectInformationForm: React.FC = () => {
                         </Col>
                     </Row>
                     <Row justify="end" style={{ marginTop: '24px' }}>
-                        <Link href="/create/rewards">
+                        <Link href="/creator/create/rewards">
                             <Button type="primary" htmlType="submit" >
                                 Next <ArrowRightOutlined />
                             </Button>

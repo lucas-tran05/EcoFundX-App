@@ -33,6 +33,15 @@ const theme: ThemeConfig = {
             activeBorderColor: 'var(--primary-color)',
             paddingBlock: 8,
             paddingInline: 12,
+        },
+        Switch: {
+            colorPrimary: 'var(--primary-color)',
+        },
+        DatePicker: {
+            hoverBorderColor: 'var(--primary-color)',
+            activeBorderColor: 'var(--primary-color)',
+            paddingBlock: 8,
+            paddingInline: 12,
         }
     },
 };

@@ -21,6 +21,8 @@
     --background-secondary: #f9fafb;
     --background-tertiary: #f3f4f6;
     --background-quaternary: #f6ffed;
+    --background-quinary: #e6f7f0;
+    --background-senary: #e6f7ff;
 
     /* background gradient */
     --background-gradient: linear-gradient(90deg, #ECFDF5 0%, #EFF6FF 100%);
@@ -29,13 +31,19 @@
     --text-primary: #333333;
     --text-secondary: #6b7280;
     --text-tertiary: #9ca3af;
+    --text-quaternary: #ffffff;
 
     /* mau thanh phan */
     --footer-background: #111827;
     --footer-text: #ffffff;
 
     /* mau border */
-    --border-color: #ccc
+    --border-color: #ccc;
+
+    /* mau icon  */
+    --icon-primary-bg: #3662E3;
+    --icon-secondary-bg: #8658E7;
+    --icon-tertiary-bg: #D9622A;
 }
 
 /* Dark Mode */
