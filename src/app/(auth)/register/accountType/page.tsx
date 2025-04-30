@@ -16,10 +16,9 @@ const AccountTypePage: React.FC = () => {
     const router = useRouter();
 
     const handleContinue = () => {
-        if (selectedType) {
-            console.log('Selected Account Type:', selectedType);
-            router.push('/register/additionalInfo');
-        }
+        sessionStorage.setItem('registerStep2', JSON.stringify({ accountType: selectedType }));
+        router.push('/register/additionalInfo'); 
+        
     };
 
     const handleSelectType = (type: AccountTypeValue) => {
