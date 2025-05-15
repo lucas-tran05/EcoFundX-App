@@ -1,7 +1,7 @@
 // project.ts
 
 export interface Gif {
-    id_gif: number;
+    id_gif: string;
     img: string;
     title: string;
     description: string;
@@ -9,12 +9,12 @@ export interface Gif {
 }
 
 export interface Project {
-    id: number;
+    id: string;
     title: string;
     tag: string;
     description: string;
     image: string;
-    endDate: string; // date dạng string ISO (JSON)
+    endDate: string;
     progress: number;
     amount: number;
     gif: Gif[];
@@ -26,7 +26,7 @@ export interface ProjectResponse {
     error?: string;
 }
 
-export async function fetchProjects(): Promise<ProjectResponse> {
+export async function fetchProjects(count?: number): Promise<ProjectResponse> {
     try {
         const res = await fetch('/data/projects.json');
         console.log('Response:', res);
@@ -34,9 +34,12 @@ export async function fetchProjects(): Promise<ProjectResponse> {
 
         const projects: Project[] = await res.json();
 
+        // Nếu count được truyền vào và nhỏ hơn tổng số dự án thì cắt mảng
+        const slicedProjects = count && count > 0 ? projects.slice(0, count) : projects;
+
         return {
             success: true,
-            data: projects,
+            data: slicedProjects,
         };
     } catch (error: any) {
         console.error('Fetch projects error:', error);
@@ -47,13 +50,14 @@ export async function fetchProjects(): Promise<ProjectResponse> {
     }
 }
 
-export async function fetchProjectById(id: number): Promise<{ success: boolean; data?: Project; error?: string }> {
+
+export async function fetchProjectById(id: string): Promise<{ success: boolean; data?: Project; error?: string }> {
     try {
         const res = await fetch('/data/projects.json');
         if (!res.ok) throw new Error('Failed to fetch projects');
 
         const projects: Project[] = await res.json();
-        const project = projects.find((p) => p.id === id);
+        const project = projects.find((p) => String(p.id) === id);
 
         if (!project) {
             return {
@@ -71,6 +75,30 @@ export async function fetchProjectById(id: number): Promise<{ success: boolean; 
         return {
             success: false,
             error: error.message || 'Lỗi không xác định khi lấy dự án theo ID',
+        };
+    }
+}
+
+export async function fetchRandomProjects(count: number): Promise<ProjectResponse> {
+    try {
+        const res = await fetch('/data/projects.json');
+        if (!res.ok) throw new Error('Failed to fetch projects');
+
+        const projects: Project[] = await res.json();
+
+        // Shuffle mảng và chọn `count` phần tử đầu tiên
+        const shuffled = projects.sort(() => 0.5 - Math.random());
+        const selected = shuffled.slice(0, count);
+
+        return {
+            success: true,
+            data: selected,
+        };
+    } catch (error: any) {
+        console.error('Fetch random projects error:', error);
+        return {
+            success: false,
+            error: error.message || 'Lỗi không xác định khi lấy dự án ngẫu nhiên',
         };
     }
 }

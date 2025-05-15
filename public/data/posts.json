@@ -1,0 +1,26 @@
+[
+    {
+        "_id": "1",
+        "author_id": "1",
+        "title": "Building a Sustainable Future",
+        "content": "Let’s work together to make the world greener and cleaner!",
+        "timeAgo": "2h ago",
+        "replies": 12,
+        "likes": 124,
+        "isBookmarked": true,
+        "tag": "Environment",
+        "image": "/images/post.png"
+    },
+    {
+        "_id": "2",
+        "author_id": "2",
+        "title": "Eco-Friendly Tips",
+        "content": "Here are 5 simple ways to reduce your carbon footprint every day.",
+        "timeAgo": "5h ago",
+        "replies": 8,
+        "likes": 89,
+        "isBookmarked": false,
+        "tag": "Tips",
+        "image": "https://source.unsplash.com/featured/?eco"
+    }
+]

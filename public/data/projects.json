@@ -1,24 +1,24 @@
 [
     {
-        "id": 3,
+        "id": "3",
         "title": "SolarPulse – Mạng lưới điện mặt trời tự động cho thành phố thông minh",
         "tag": "Renewable Energy",
         "description": "SolarPulse kết nối hàng triệu tấm pin mặt trời thông minh, tối ưu hóa nguồn năng lượng sạch và giúp giảm đáng kể lượng phát thải CO2 tại các khu đô thị.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://i0.wp.com/techdhome.com/wp-content/uploads/2023/12/image.webp?w=1792&ssl=1",
         "endDate": "2026-11-15",
         "progress": 60,
         "amount": 3000000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://images.farmfoodfamily.com/wp-content/uploads/2023/01/solar-panels-on-modern-house.jpg",
                 "title": "SolarPulse - Quy trình lắp đặt",
                 "description": "Mô phỏng lắp đặt tấm pin mặt trời thông minh",
                 "price": 1000000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://i.pinimg.com/736x/d6/a5/52/d6a5523c10fe9f8a4cacdc087dcef73b.jpg",
                 "title": "SolarPulse - Giám sát hệ thống",
                 "description": "Giao diện giám sát trực tuyến hiệu suất mạng lưới",
                 "price": 2000000
@@ -26,25 +26,25 @@
         ]
     },
     {
-        "id": 4,
+        "id": "4",
         "title": "EcoCycle – Hệ thống tái chế thông minh với AI",
         "tag": "Waste Management",
         "description": "EcoCycle ứng dụng AI để phân loại rác tự động, nâng cao hiệu suất tái chế và giảm thiểu lượng rác thải đổ ra môi trường, góp phần xây dựng đô thị xanh hơn.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://i.pinimg.com/736x/14/d3/5b/14d35b1e5b9fa970b3e0ca682ebcb98e.jpg",
         "endDate": "2027-01-20",
         "progress": 40,
         "amount": 1500000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://miro.medium.com/v2/resize%3Afit%3A1400/0%2AjjN4OiEjEZs7qjnm.png",
                 "title": "EcoCycle - AI phân loại rác",
                 "description": "Demo robot phân loại rác thải tự động",
                 "price": 700000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://media.licdn.com/dms/image/v2/D4D12AQHoRyK-kYoXcQ/article-cover_image-shrink_720_1280/article-cover_image-shrink_720_1280/0/1721172568790?e=2147483647&t=wIydxAwQhXxXFdGYjWqoNbeDPSmM4iu4PPfT1efgEdM&v=beta",
                 "title": "EcoCycle - Hệ thống vận hành",
                 "description": "Mô hình hệ thống tái chế thông minh",
                 "price": 800000
@@ -52,25 +52,25 @@
         ]
     },
     {
-        "id": 5,
+        "id": "5",
         "title": "WindWay – Giải pháp năng lượng gió nhỏ gọn cho gia đình",
         "tag": "Renewable Energy",
         "description": "WindWay phát triển turbine gió mini, hiệu quả cao, phù hợp lắp đặt tại các hộ gia đình nhằm tăng nguồn điện xanh và giảm chi phí điện hàng tháng.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://media.istockphoto.com/id/119817152/vi/anh/tuabin-gi%C3%B3-d%C3%A2n-d%E1%BB%A5ng.jpg?s=612x612&w=0&k=20&c=uaLa80JBtfQetcBnudDLoyiza8SubDPMaKyV4z4zGtc=",
         "endDate": "2026-09-10",
         "progress": 70,
         "amount": 1800000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://media.gettyimages.com/id/94107563/photo/mom-and-small-boy-w-toy-airplane-by-wind-turbines.jpg?s=612x612&w=0&k=20&c=diL_pZ8iHl5k7GWmfv1rcw2ai2MetUws31cOSJiCmnY=",
                 "title": "WindWay - Mô hình turbine gió",
                 "description": "Hình ảnh turbine gió mini hoạt động",
                 "price": 900000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://asiawind.com.vn/wp-content/uploads/2023/10/lap-dat-he-thong-dien-gio-gia-dinh-5.jpg",
                 "title": "WindWay - Lắp đặt tại nhà",
                 "description": "Hướng dẫn lắp đặt turbine gió tại hộ gia đình",
                 "price": 900000
@@ -78,25 +78,25 @@
         ]
     },
     {
-        "id": 6,
+        "id": "6",
         "title": "BioMat – Vật liệu xây dựng sinh học thân thiện môi trường",
         "tag": "Green Building",
         "description": "BioMat nghiên cứu và phát triển vật liệu xây dựng từ các nguồn sinh học tái tạo, giảm đáng kể khí thải carbon trong ngành xây dựng truyền thống.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://oisp.hcmut.edu.vn/wp-content/uploads/2022/06/Vat-lieu-sinh-hoc-huong-di-tien-phong-trong-nganh-xay-dung_8.jpg",
         "endDate": "2027-03-05",
         "progress": 50,
         "amount": 2200000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://vatlieuxaydung.org.vn/Upload/48/Nam_2022/Thang_7/Ngay_12/ximang_tamlop2.jpg",
                 "title": "BioMat - Quy trình sản xuất",
                 "description": "Minh họa quy trình chế tạo vật liệu sinh học",
                 "price": 1100000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://kienviet.net/wp-content/uploads/2023/07/kienviet-11-vat-lieu-xay-dung-ben-vung-11.jpg",
                 "title": "BioMat - Ứng dụng thực tế",
                 "description": "Hình ảnh vật liệu được sử dụng trong công trình xanh",
                 "price": 1100000
@@ -104,25 +104,25 @@
         ]
     },
     {
-        "id": 7,
+        "id": "7",
         "title": "UrbanFarm – Nông trại đô thị tự động hóa",
         "tag": "Smart Agriculture",
         "description": "UrbanFarm kết hợp IoT và AI để tự động quản lý môi trường và chăm sóc cây trồng trong các khu đô thị, giúp tăng năng suất và bảo vệ nguồn thực phẩm sạch.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://ktmt.vnmediacdn.com/stores/news_dataimages/nguyenthiluan/082020/24/10/in_article/0842_nong_trai_do_thi_10-1598161441136.jpg",
         "endDate": "2026-08-25",
         "progress": 65,
         "amount": 2700000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://media.gettyimages.com/id/1408256837/photo/a-young-female-african-florist-is-checking-the-air-temperature-in-a-greenhouse-full-of-flowers.jpg?s=612x612&w=0&k=20&c=jyZGnGDpmT7s53G0NfgtHxuS0sNbU-tZMqHuzXhE5mY=",
                 "title": "UrbanFarm - Hệ thống IoT",
                 "description": "Demo cảm biến và hệ thống quản lý tự động",
                 "price": 1300000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://bizweb.dktcdn.net/thumb/2048x2048/100/447/634/files/picture2-0a4d340a-0c11-41c1-899e-3fd0fa2d01d6.jpg?v=1698482268611",
                 "title": "UrbanFarm - Thu hoạch tự động",
                 "description": "Robot thu hoạch rau củ trong nông trại đô thị",
                 "price": 1400000
@@ -130,25 +130,25 @@
         ]
     },
     {
-        "id": 8,
+        "id": "8",
         "title": "HydroClean – Hệ thống xử lý nước thải xanh",
         "tag": "Water Treatment",
         "description": "HydroClean phát triển công nghệ xử lý nước thải sử dụng vi sinh vật và vật liệu tự nhiên, giúp giảm thiểu ô nhiễm và tái sử dụng nước trong công nghiệp và đô thị.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://hachvietnam.vn/wp-content/uploads/2024/03/xu-ly-nuoc-thai-va-tam-quan-trong-cua-cong-nghe-xanh.jpg",
         "endDate": "2027-04-12",
         "progress": 55,
         "amount": 1900000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://media.gettyimages.com/id/1368393616/photo/aerial-view-of-the-solid-contact-clarifier-tank-type-sludge-recirculation-in-water-treatment.jpg?s=612x612&w=0&k=20&c=q1oLlGQ0XsQZCYzA3b16EdadDHM7t4NfCgwzhZIw-wA=",
                 "title": "HydroClean - Quy trình xử lý",
                 "description": "Minh họa quy trình vi sinh xử lý nước thải",
                 "price": 950000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://media.gettyimages.com/id/85641887/photo/wastewater-treatment-facility-in-houston-texas.jpg?s=612x612&w=0&k=20&c=2mnbjSA1no0rfWWnOgolmM3djDA35t2P8XPUTNym_Cg=",
                 "title": "HydroClean - Ứng dụng thực tế",
                 "description": "Hệ thống xử lý nước thải trong nhà máy",
                 "price": 950000
@@ -156,25 +156,25 @@
         ]
     },
     {
-        "id": 9,
+        "id": "9",
         "title": "EcoCharge – Trạm sạc xe điện xanh và thông minh",
         "tag": "Electric Vehicles",
         "description": "EcoCharge xây dựng mạng lưới trạm sạc xe điện sử dụng năng lượng tái tạo, tích hợp công nghệ thông minh để tối ưu hóa hiệu suất và trải nghiệm người dùng.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://media.istockphoto.com/id/1526549547/vi/anh/ev-xe-h%C6%A1i-ho%E1%BA%B7c-xe-%C4%91i%E1%BB%87n-s%E1%BA%A1c-pin-c%E1%BA%AFm-v%E1%BB%9Bi-tr%E1%BA%A1m-s%E1%BA%A1c.jpg?s=612x612&w=0&k=20&c=_QY85ZBzo7UU1fn96jSXXvo6FY9Wge2dubQn6H8aB7I=",
         "endDate": "2026-12-01",
         "progress": 45,
         "amount": 2500000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://media.istockphoto.com/id/1494711233/vi/anh/c%C6%A1-s%E1%BB%9F-s%E1%BA%A1c-xe-bu%C3%BDt-%C4%91i%E1%BB%87n-%C4%91%C3%B4-th%E1%BB%8B.jpg?s=612x612&w=0&k=20&c=9sWKtcauZwAJ5xQGVvLG1dpqZOc3uriVOidJjexCx3M=",
                 "title": "EcoCharge - Mô hình trạm sạc",
                 "description": "Hình ảnh trạm sạc xe điện thân thiện môi trường",
                 "price": 1200000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://cdn.dribbble.com/userupload/18794865/file/original-7ba7371f90b50a855651bbd583081d4d.png?resize=1504x1129&vertical=center0",
                 "title": "EcoCharge - Ứng dụng điều khiển",
                 "description": "Giao diện app quản lý trạm sạc thông minh",
                 "price": 1300000
@@ -182,25 +182,25 @@
         ]
     },
     {
-        "id": 10,
+        "id": "10",
         "title": "SmartGrid – Lưới điện thông minh quản lý năng lượng hiệu quả",
         "tag": "Energy Management",
         "description": "SmartGrid sử dụng công nghệ phân tích dữ liệu lớn và AI để tối ưu hóa việc phân phối và sử dụng năng lượng trong khu vực đô thị, giảm chi phí và nâng cao độ bền vững.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://media.istockphoto.com/id/1400218290/vi/anh/kh%C3%A1i-ni%E1%BB%87m-l%C6%B0%E1%BB%9Bi-%C4%91i%E1%BB%87n-th%C3%B4ng-minh-n%C4%83ng-l%C6%B0%E1%BB%A3ng-t%C3%A1i-t%E1%BA%A1o.jpg?s=612x612&w=0&k=20&c=TUWMMioy5gXuRlq9PNCFaXAAlr8EQi8O8GXMUXv5VJs=",
         "endDate": "2027-02-28",
         "progress": 50,
         "amount": 2800000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://media.istockphoto.com/id/612623042/vi/anh/t%C3%B3m-t%E1%BA%AFt-kh%C3%A1i-ni%E1%BB%87m-l%C6%B0%E1%BB%9Bi-th%C3%B4ng-minh.jpg?s=612x612&w=0&k=20&c=gvW6g89OozDOcELtk76XaCyvvbdw0SZYRHch1sRaUy8=",
                 "title": "SmartGrid - Giám sát năng lượng",
                 "description": "Dashboard giám sát và phân tích năng lượng",
                 "price": 1400000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://media.istockphoto.com/id/1701879316/vi/anh/kh%C3%A1i-ni%E1%BB%87m-n%C4%83ng-l%C6%B0%E1%BB%A3ng-t%C3%A1i-t%E1%BA%A1o-v%C3%A0-c%C3%B4ng-ngh%E1%BB%87-m%C3%B4i-tr%C6%B0%E1%BB%9Dng-nh%C3%A0-m%C3%A1y-%C4%91i%E1%BB%87n-gi%C3%B3-nh%C3%A0-m%C3%A1y-%C4%91i%E1%BB%87n-m%E1%BA%B7t-tr%E1%BB%9Di-m%E1%BB%A5c.jpg?s=612x612&w=0&k=20&c=vgR5jHk9MlM6yqDpIGjxhAPR1JBIE7XQrZ-VSuA0S4g=",
                 "title": "SmartGrid - Điều khiển từ xa",
                 "description": "Giao diện điều khiển hệ thống lưới điện thông minh",
                 "price": 1400000
@@ -208,25 +208,25 @@
         ]
     },
     {
-        "id": 11,
+        "id": "11",
         "title": "GreenMove – Ứng dụng chia sẻ xe điện thân thiện môi trường",
         "tag": "Transportation",
         "description": "GreenMove khuyến khích việc sử dụng phương tiện giao thông xanh bằng cách cung cấp dịch vụ chia sẻ xe điện dễ tiếp cận và tiện lợi cho cộng đồng đô thị.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://images.openai.com/thumbnails/83731594840c70cb9b200ee2b25d2699.jpeg",
         "endDate": "2026-10-18",
         "progress": 55,
         "amount": 1600000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://cellphones.com.vn/sforum/wp-content/uploads/2023/08/tai-xanh-sm.jpg",
                 "title": "GreenMove - Ứng dụng di động",
                 "description": "Demo app chia sẻ xe điện thân thiện môi trường",
                 "price": 800000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://btnmt.1cdn.vn/2024/04/03/anh-1-8-.jpg",
                 "title": "GreenMove - Trạm dừng xe",
                 "description": "Hệ thống trạm dừng và bảo trì xe điện",
                 "price": 800000
@@ -234,25 +234,25 @@
         ]
     },
     {
-        "id": 12,
+        "id": "12",
         "title": "CleanAir – Hệ thống giám sát chất lượng không khí thời gian thực",
         "tag": "Environmental Monitoring",
         "description": "CleanAir cung cấp các cảm biến và nền tảng phân tích dữ liệu để giám sát chất lượng không khí, hỗ trợ cảnh báo sớm và đề xuất giải pháp bảo vệ sức khỏe cộng đồng.",
-        "image": "/placeholder.svg?height=400&width=600",
+        "image": "https://media.wired.com/photos/64e825d81d2158c871cb1258/3:2/w_1920,c_limit/Gear-Air-Quality-Data-1373925389-(1).jpg",
         "endDate": "2027-05-15",
         "progress": 35,
         "amount": 2100000,
         "gif": [
             {
-                "id_gif": 1,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "1",
+                "img": "https://t3.ftcdn.net/jpg/04/27/58/16/240_F_427581648_k7f5hDxqdb5x8JCSN8k5o30iRclHnVRN.jpg",
                 "title": "CleanAir - Cảm biến môi trường",
                 "description": "Minh họa cảm biến đo chất lượng không khí",
                 "price": 1050000
             },
             {
-                "id_gif": 2,
-                "img": "/placeholder.svg?height=400&width=600",
+                "id_gif": "2",
+                "img": "https://t4.ftcdn.net/jpg/06/14/67/59/240_F_614675995_mxQ6gFIFWbNYTJ5PWViZVXw9GM1qgxRH.jpg",
                 "title": "CleanAir - Bản đồ giám sát",
                 "description": "Dashboard theo dõi dữ liệu môi trường theo vùng",
                 "price": 1050000

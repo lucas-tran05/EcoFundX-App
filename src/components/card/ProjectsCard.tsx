@@ -14,7 +14,6 @@ interface ProjectsCardProps {
     progress: number;
     amount: number;
     image?: string;
-    onClick?: () => void;
 }
 
 export default function ProjectsCard({
@@ -26,7 +25,6 @@ export default function ProjectsCard({
     progress = 0,
     amount = 0,
     image = "/images/post.png",
-    onClick
 }: ProjectsCardProps) {
 
     const twoColors: ProgressProps['strokeColor'] = {
@@ -59,7 +57,7 @@ export default function ProjectsCard({
                     {endDate ? Math.ceil((endDate.getTime() - Date.now()) / (1000 * 3600 * 24)) : "No end"} days left
                 </Typography.Text>
             </Flex>
-            <Typography.Title level={5} style={{ margin: '8px 0', fontWeight: 'bold' }}>
+            <Typography.Title level={5} style={{ margin: '8px 0', fontWeight: 'bold' }} ellipsis={{ rows: 1 }}> 
                 {title}
             </Typography.Title>
             <Typography.Paragraph type="secondary" style={{ marginBottom: '16px' }} ellipsis={{ rows: 2 }}>
@@ -72,7 +70,7 @@ export default function ProjectsCard({
             />
             <Flex justify="space-between" align="middle" style={{ marginTop: '16px' }}>
                 <Typography.Text style={amountStyle}>₫{Number(amount).toLocaleString('vi-VN')}</Typography.Text>
-                <Button type="primary" onClick={onClick}>
+                <Button type="primary">
                     <Link href={`/projects/${_id}`}>Tham gia ngay</Link>
                 </Button>
             </Flex>

@@ -8,11 +8,12 @@ const ProjectPage = () => {
     const [projects, setProjects] = useState<Project[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [limit, setLimit] = useState(6);
 
     useEffect(() => {
         const getProjects = async () => {
-            setLoading(true);
-            const res = await fetchProjects();
+            setLoading(true);   
+            const res = await fetchProjects(limit);
             if (res.success && res.data) {
                 setProjects(res.data);
                 setError(null);
@@ -22,7 +23,11 @@ const ProjectPage = () => {
             setLoading(false);
         };
         getProjects();
-    }, []);
+    }, [limit]);
+
+    const handleLoadMore = () => {
+        setLimit(prev => prev + 3);
+    };
 
     return (
         <Layout.Content style={{ padding: '32px' }}>
@@ -57,27 +62,33 @@ const ProjectPage = () => {
             ) : error ? (
                 <Alert type="error" message={error} />
             ) : (
-                <Row gutter={[16, 16]} justify="center" align="middle" style={{ width: "100%", marginTop: '30px' }}>
-                    {projects.map((project) => (
-                        <Col xs={24} sm={24} md={8} lg={8} key={project.id}>
-                            <ProjectsCard
-                                _id={project.id}
-                                title={project.title}
-                                tag={project.tag}
-                                description={project.description}
-                                image={project.image}
-                                endDate={new Date(project.endDate)}
-                                progress={project.progress}
-                                amount={project.amount}
-                                // onClick={project.onClick}
-                            />
-                        </Col>
-                    ))}
-                </Row>
+                <>
+                    <Row gutter={[16, 16]} justify="center" align="middle" style={{ width: "100%", marginTop: '30px' }}>
+                        {projects.map((project) => (
+                            <Col xs={24} sm={24} md={8} lg={8} key={project.id}>
+                                <ProjectsCard
+                                    _id={project.id}
+                                    title={project.title}
+                                    tag={project.tag}
+                                    description={project.description}
+                                    image={project.image}
+                                    endDate={new Date(project.endDate)}
+                                    progress={project.progress}
+                                    amount={project.amount}
+                                />
+                            </Col>
+                        ))}
+                    </Row>
+                    {/* Nếu chưa lấy hết dự án thì hiển thị nút Load More */}
+                    {projects.length >= limit && (
+                        <Row justify="center" style={{ marginTop: '30px' }}>
+                            <Button type='dashed' size="large" onClick={handleLoadMore}>
+                                Load More
+                            </Button>
+                        </Row>
+                    )}
+                </>
             )}
-            <Row justify="center" style={{ marginTop: '30px' }}>
-                <Button type='dashed' size="large">Load More</Button>
-            </Row>
         </Layout.Content>
     );
 };

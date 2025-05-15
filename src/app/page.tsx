@@ -1,5 +1,6 @@
 'use client';
 import React from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/AppHeader";
 import Footer from "@/components/AppFooter";
 import Image from "next/image";
@@ -7,7 +8,33 @@ import Link from "next/link";
 import ProjectsCard from "@/components/card/ProjectsCard";
 import { Layout, Typography, Flex, Row, Col, Button, Card, Space } from "antd";
 import { FaRocket, FaCheck, FaChartLine, FaRegQuestionCircle, FaSeedling, FaHandshake } from "react-icons/fa";
+import { fetchRandomProjects } from "@/lib/api/project";
 
+
+export interface Gif {
+    id_gif: string;
+    img: string;
+    title: string;
+    description: string;
+    price: number;
+}
+
+export interface Project {
+    id: string;
+    title: string;
+    tag: string;
+    description: string;
+    image: string;
+    endDate: string; // date dạng string ISO (JSON)
+    progress: number;
+    amount: number;
+    gif: Gif[];
+}
+export interface ProjectResponse {
+    success: boolean;
+    data?: Project[];
+    error?: string;
+}
 export default function HomePage() {
     const benefits = [
         {
@@ -29,41 +56,21 @@ export default function HomePage() {
             icon: <FaHandshake style={{ color: "var(--primary-color)" }} />,
         },
     ];
-    const projects = [
-        {
-            id: 1,
-            title: "Project 1",
-            tag: "Renewable energy",
-            description: "Description of project 1",
-            image: "/images/post.png",
-            endDate: new Date("2026-12-31"),
-            progress: 50,
-            amount: 1000000,
-            onClick: () => console.log("Project 1 clicked"),
-        },
-        {
-            id: 2,
-            title: "Project 2",
-            tag: "Renewable energy",
-            description: "Description of project 2",
-            image: "/images/home.svg",
-            endDate: new Date("2026-1-31"),
-            progress: 75,
-            amount: 2000000,
-            onClick: () => console.log("Project 2 clicked"),
-        },
-        {
-            id: 3,
-            title: "Project 3",
-            tag: "Renewable energy",
-            description: "Description of project 3",
-            image: "/images/post.png",
-            endDate: new Date("2026-2-28"),
-            progress: 25,
-            amount: 500000,
-            onClick: () => console.log("Project 3 clicked"),
-        }
-    ]
+    const [projects, setProjects] = useState<Project[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        fetchRandomProjects(3) // lấy 3 project ngẫu nhiên
+            .then((res) => {
+                if (res.success && res.data) {
+                    setProjects(res.data);
+                } else {
+                    setError(res.error || "Lỗi không xác định");
+                }
+                setLoading(false);
+            });
+    }, []);
 
     return (
         <>
@@ -250,10 +257,9 @@ export default function HomePage() {
                                     tag={project.tag}
                                     description={project.description}
                                     image={project.image}
-                                    endDate={project.endDate}
+                                    endDate={new Date(project.endDate)}
                                     progress={project.progress}
                                     amount={project.amount}
-                                    onClick={project.onClick}
                                 />
                             </Col>
                         ))}
