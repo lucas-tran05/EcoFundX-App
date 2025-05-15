@@ -1,11 +1,10 @@
 'use client';
 
-import React from 'react';
-import { Form, Input, Select, Button, Checkbox, Upload, Row, Col, Typography, Flex, Card } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Form, Input, Select, Button, Checkbox, Upload, Row, Col, Typography, Card, Flex } from 'antd';
 import { MdOutlineAttachEmail } from "react-icons/md";
-import { FaPhone, FaRegClock  } from "react-icons/fa6";
+import { FaPhone, FaRegClock } from "react-icons/fa6";
 import { UploadOutlined } from '@ant-design/icons';
-import { icons } from 'antd/es/image/PreviewGroup';
 
 const { Option } = Select;
 
@@ -30,7 +29,19 @@ const quickContactOptions = [
         icons: <FaRegClock />,
     },
 ];
+
 const ContactForm: React.FC = () => {
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth);
+
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     const onFinish = (values: any) => {
         console.log('Form values:', values);
     };
@@ -45,29 +56,45 @@ const ContactForm: React.FC = () => {
     return (
         <Row gutter={[32, 32]} justify="center" align="top" style={{ padding: '40px', margin: 0 }}>
             <Row gutter={[16, 16]}>
-                <Flex vertical align="center">
-                    <Typography.Title level={2} style={{ fontWeight: 'bold' }}>We'd Love to Hear from You!</Typography.Title>
-                    <Typography.Paragraph>Have questions about EcoFundX? We're here to help and listen to your feedback.</Typography.Paragraph>
+                <Flex justify="center" align="center" style={{ width: '100%' }}>
+                    <Typography.Title level={2} style={{ fontWeight: 'bold' }}>
+                        We'd Love to Hear from You!
+                    </Typography.Title>
+                    <Typography.Paragraph>
+                        Have questions about EcoFundX? We're here to help and listen to your feedback.
+                    </Typography.Paragraph>
                 </Flex>
             </Row>
 
-            <Row gutter={[32, 32]} style={{ width: window.innerWidth < 768 ? '90%' : '80%' }} align="top" justify="center">
+            <Row
+                gutter={[32, 32]}
+                style={{ width: windowWidth < 768 ? '90%' : '80%' }}
+                align="top"
+                justify="center"
+            >
                 {/* Contact Info Column */}
-                <Col xs={24} sm={24} md={14} lg={8} >
+                <Col xs={24} sm={24} md={14} lg={8}>
                     <Card>
-                        <Typography.Title level={4} style={{ fontWeight: 'bold' }}>Quick Contact</Typography.Title>
+                        <Typography.Title level={4} style={{ fontWeight: 'bold' }}>
+                            Quick Contact
+                        </Typography.Title>
                         {quickContactOptions.map((option) => (
-                            <Flex align="center" gap={16} key={option.value} style={{ marginBottom: '16px' }}>
+                            <Flex
+                                align="center"
+                                gap={16}
+                                key={option.value}
+                                style={{ marginBottom: '16px' }}
+                            >
                                 <div
                                     style={{
-                                        backgroundColor: "var(--icon-primary-bg)",
-                                        width: "42px",
-                                        height: "42px",
-                                        borderRadius: "50%",
-                                        display: "flex",
-                                        alignItems: "center",
-                                        justifyContent: "center",
-                                        color: "var(--primary-color)"
+                                        backgroundColor: 'var(--icon-primary-bg)',
+                                        width: '42px',
+                                        height: '42px',
+                                        borderRadius: '50%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        color: 'var(--primary-color)',
                                     }}
                                 >
                                     {option.icons}
@@ -77,15 +104,10 @@ const ContactForm: React.FC = () => {
                         ))}
                     </Card>
                 </Col>
+
                 {/* Contact Form Column */}
                 <Col xs={24} sm={24} md={14} lg={14}>
-                    <Form
-                        layout="vertical"
-                        onFinish={onFinish}
-                        style={{ margin: '0 auto' }}
-                        size='large'
-                    >
-                        {/* Full Name */}
+                    <Form layout="vertical" onFinish={onFinish} style={{ margin: '0 auto' }} size="large">
                         <Form.Item
                             label="Full Name"
                             name="fullName"
@@ -93,7 +115,7 @@ const ContactForm: React.FC = () => {
                         >
                             <Input placeholder="John Doe" />
                         </Form.Item>
-                        {/* Email Address */}
+
                         <Form.Item
                             label="Email Address"
                             name="email"
@@ -104,7 +126,7 @@ const ContactForm: React.FC = () => {
                         >
                             <Input placeholder="john@example.com" />
                         </Form.Item>
-                        {/* Subject */}
+
                         <Form.Item
                             label="Subject"
                             name="subject"
@@ -116,7 +138,7 @@ const ContactForm: React.FC = () => {
                                 <Option value="feedback">Feedback</Option>
                             </Select>
                         </Form.Item>
-                        {/* Message */}
+
                         <Form.Item
                             label="Message"
                             name="message"
@@ -124,23 +146,21 @@ const ContactForm: React.FC = () => {
                         >
                             <Input.TextArea rows={4} placeholder="Your message here..." />
                         </Form.Item>
-                        {/* Attachments */}
+
                         <Form.Item label="Attachments (Optional)" name="attachments">
                             <Upload {...uploadProps}>
                                 <Button icon={<UploadOutlined />}>Click to Upload</Button>
                             </Upload>
                         </Form.Item>
-                        {/* Agreement Checkbox */}
+
                         <Form.Item
                             name="agreement"
                             valuePropName="checked"
                             rules={[{ validator: validateAgreement }]}
                         >
-                            <Checkbox>
-                                I agree to the privacy policy and terms of service
-                            </Checkbox>
+                            <Checkbox>I agree to the privacy policy and terms of service</Checkbox>
                         </Form.Item>
-                        {/* Submit Button */}
+
                         <Form.Item>
                             <Button type="primary" htmlType="submit" block>
                                 Submit
