@@ -1,35 +1,32 @@
-const API_URL = process.env.API_URL || 'http://localhost:8000';
-export interface LoginResponse {
-    message: string;
-    user?: {
-        name: string;
-        [key: string]: any;
-    };
-}
-
-// export interface RegisterResponse {
-//     message: string;
-//     user?: {
-//         name: string;
-//         [key: string]: any;
-//     };
-// }
-
-export async function loginUser(
-    email: string,
-    password: string
-): Promise<{ success: boolean; data: LoginResponse }> {
+export async function loginUser(email: string, password: string) {
     try {
-        const res = await fetch(`${API_URL}/auth/login`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ email, password }),
-            credentials: 'include',
-        });
+        const res = await fetch('/data/user.json');
+        const users = await res.json();
 
-        const data: LoginResponse = await res.json();
+        const user = users.find(
+            (u: any) => u.email === email && u.password === password
+        );
 
-        return { success: res.ok, data };
+        if (user) {
+            return {
+                success: true,
+                data: {
+                    message: 'Đăng nhập thành công',
+                    user: {
+                        name: user.name,
+                        email: user.email,
+                        role: user.role,
+                        phone: user.phone,
+                        avatar_url: user.avatar_url,
+                    },
+                },
+            };
+        } else {
+            return {
+                success: false,
+                data: { message: 'Email hoặc mật khẩu không đúng' },
+            };
+        }
     } catch (error) {
         console.error('Login error:', error);
         return {
@@ -38,39 +35,3 @@ export async function loginUser(
         };
     }
 }
-
-// export async function registerUser(
-//     name: string,
-//     email: string,
-//     password: string,
-//     acountType: string,
-//     phoneNumber: string,
-//     bio: string,
-//     address: string,
-//     website: string,
-//     socialLinks: string,
-//     avatar: string,
-//     companyName: string,
-//     companyAddress: string,
-//     companyWebsite: string,
-//     companyDescription: string,
-// ): Promise<{ success: boolean; data: LoginResponse }> {
-//     try {
-//         const res = await fetch(`${API_URL}/auth/register`, {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ name, email, password }),
-//             credentials: 'include',
-//         });
-
-//         const data: LoginResponse = await res.json();
-
-//         return { success: res.ok, data };
-//     } catch (error) {
-//         console.error('Register error:', error);
-//         return {
-//             success: false,
-//             data: { message: 'Lỗi kết nối đến server' },
-//         };
-//     }
-// }

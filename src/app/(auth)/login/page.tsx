@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import { Layout, Flex, Button, Card, Input, Checkbox, Divider, Typography, Row, Col, Form, Image, notification } from 'antd'; // Bỏ ConfigProvider nếu không dùng theme riêng ở đây
+import { Layout, Flex, Button, Card, Input, Checkbox, Divider, Typography, Row, Col, Form, Image, notification, Alert } from 'antd';
 import { GoogleOutlined, FacebookFilled, LinkedinFilled, MailOutlined, LockOutlined } from '@ant-design/icons';
 import Link from "next/link";
 import { loginUser } from "@/lib/api/auth";
@@ -10,12 +10,20 @@ const { Text, Title, Paragraph } = Typography;
 
 const LoginPage: React.FC = () => {
     const [message, setMessage] = useState<string>('');
+
     const onFinish = async (values: any) => {
         try {
             const { success, data } = await loginUser(values.email, values.password);
-            setMessage(success ? `${data.message}` : `${data.message}`);
+            setMessage(data.message);
+
             if (success) {
-                window.location.href = '/dashboard';
+                // Lưu user vào localStorage
+                if (data.user) {
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                }
+
+                // Chuyển hướng
+                window.location.href = '/';
             } else {
                 notification.error({
                     message: 'Login Failed',
@@ -35,7 +43,6 @@ const LoginPage: React.FC = () => {
         }
     };
 
-
     return (
         <Flex
             justify="center"
@@ -54,7 +61,6 @@ const LoginPage: React.FC = () => {
                     maxWidth: '500px',
                 }}
             >
-
                 <Flex vertical align="center" style={{ marginBottom: '24px' }}>
                     <Title
                         level={2}
@@ -98,7 +104,10 @@ const LoginPage: React.FC = () => {
                         <Form.Item
                             label={<Text>Email Address</Text>}
                             name="email"
-                            rules={[{ required: true, message: 'Please input your Email Address!' }, { type: 'email', message: 'Please enter a valid email!' }]}
+                            rules={[
+                                { required: true, message: 'Please input your Email Address!' },
+                                { type: 'email', message: 'Please enter a valid email!' }
+                            ]}
                         >
                             <Input
                                 prefix={<MailOutlined style={{ color: 'rgba(0,0,0,.25)' }} />}
@@ -134,7 +143,7 @@ const LoginPage: React.FC = () => {
 
                         {/* Login Button */}
                         <Form.Item>
-                            <Button type="primary" htmlType="submit" block size="large" >
+                            <Button type="primary" htmlType="submit" block size="large">
                                 Log In
                             </Button>
                         </Form.Item>
@@ -142,7 +151,7 @@ const LoginPage: React.FC = () => {
 
                     {/* Social Media Sign-Up */}
                     <Divider style={{ marginTop: '30px' }}>Or sign up with</Divider>
-                    <Row justify="center" gutter={[16, 10]} >
+                    <Row justify="center" gutter={[16, 10]}>
                         <Col xs={24} sm={6} md={6} lg={6}>
                             <Button icon={<GoogleOutlined style={{ fontSize: 20 }} />} size="large" block style={{ fontSize: '14px' }}>
                                 Google
@@ -155,15 +164,17 @@ const LoginPage: React.FC = () => {
                         </Col>
                         <Col xs={24} sm={6} md={6} lg={6}>
                             <Button icon={<LinkedinFilled style={{ fontSize: 20, color: 'var(--tertiary-color)' }} />} size="large" block style={{ fontSize: '14px' }}>
-                                Linkedln
+                                LinkedIn
                             </Button>
                         </Col>
                     </Row>
 
-                    {/* Login Link */}
+                    {/* Register Link */}
                     <Paragraph style={{ marginTop: '20px', textAlign: 'center' }}>
                         Don't have an account?{' '}
-                        <Link href="/register/basicInfo" style={{ color: 'var(--primary-color)' }}>Sign up</Link>
+                        <Link href="/register/basicInfo" style={{ color: 'var(--primary-color)' }}>
+                            Sign up
+                        </Link>
                     </Paragraph>
                 </Card>
             </Flex>
