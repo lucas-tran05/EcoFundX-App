@@ -17,6 +17,7 @@ export interface Project {
     endDate: string;
     progress: number;
     amount: number;
+    author_id: string;
     gif: Gif[];
 }
 

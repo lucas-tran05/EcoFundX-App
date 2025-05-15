@@ -31,25 +31,9 @@ interface Project {
     endDate: string;
     progress: number;
     amount: number;
+    author_id: string;
     gif: GifItem[];
 }
-
-const comments: CommentType[] = [
-    {
-        id: '1',
-        author: 'Sarah Johnson',
-        avatar: '/avatars/sarah.jpg',
-        content: 'This is exactly the kind of sustainable solution we need. Looking forward to seeing this implemented!',
-        datetime: '2 days ago'
-    },
-    {
-        id: '2',
-        author: 'David Williams',
-        avatar: '/avatars/david.jpg',
-        content: 'Have you considered implementing this in tropical regions? The solar efficiency might be even better there.',
-        datetime: '1 day ago'
-    }
-];
 
 const ProjectView: FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -263,11 +247,11 @@ const ProjectView: FC = () => {
                                 Post Comment
                             </Button>
                         </div>
-                        <List
+                        {/* <List
                             itemLayout="horizontal"
                             dataSource={comments}
                             renderItem={(item) => <CommentCard key={item.id} comment={item} />}
-                        />
+                        /> */}
                     </Layout.Content>
                 </Card>
             </Col>

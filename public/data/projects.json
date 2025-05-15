@@ -8,6 +8,7 @@
         "endDate": "2026-11-15",
         "progress": 60,
         "amount": 3000000,
+        "author_id": "1",
         "gif": [
             {
                 "id_gif": "1",
@@ -34,6 +35,7 @@
         "endDate": "2027-01-20",
         "progress": 40,
         "amount": 1500000,
+        "author_id": "1",
         "gif": [
             {
                 "id_gif": "1",
@@ -60,6 +62,7 @@
         "endDate": "2026-09-10",
         "progress": 70,
         "amount": 1800000,
+        "author_id": "1",
         "gif": [
             {
                 "id_gif": "1",
@@ -86,6 +89,7 @@
         "endDate": "2027-03-05",
         "progress": 50,
         "amount": 2200000,
+        "author_id": "4",
         "gif": [
             {
                 "id_gif": "1",
@@ -112,6 +116,7 @@
         "endDate": "2026-08-25",
         "progress": 65,
         "amount": 2700000,
+        "author_id": "5",
         "gif": [
             {
                 "id_gif": "1",
@@ -138,6 +143,7 @@
         "endDate": "2027-04-12",
         "progress": 55,
         "amount": 1900000,
+        "author_id": "6",
         "gif": [
             {
                 "id_gif": "1",
@@ -164,6 +170,7 @@
         "endDate": "2026-12-01",
         "progress": 45,
         "amount": 2500000,
+        "author_id": "7",
         "gif": [
             {
                 "id_gif": "1",
@@ -190,6 +197,7 @@
         "endDate": "2027-02-28",
         "progress": 50,
         "amount": 2800000,
+        "author_id": "8",
         "gif": [
             {
                 "id_gif": "1",
@@ -216,6 +224,7 @@
         "endDate": "2026-10-18",
         "progress": 55,
         "amount": 1600000,
+        "author_id": "9",
         "gif": [
             {
                 "id_gif": "1",
@@ -242,6 +251,7 @@
         "endDate": "2027-05-15",
         "progress": 35,
         "amount": 2100000,
+        "author_id": "10",
         "gif": [
             {
                 "id_gif": "1",
