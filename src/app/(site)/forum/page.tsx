@@ -1,111 +1,52 @@
 'use client';
-import React, { useState } from 'react';
-import { Layout, Menu, Button, List, Avatar, Tag, Space, Typography, Badge, Flex, Row, Col } from 'antd';
-import { HomeOutlined, CompassOutlined, BookOutlined, UserOutlined, PlusOutlined } from '@ant-design/icons';
-import type { MenuProps } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Button, List, Typography, Row, Spin, Alert } from 'antd';
 import PostsCard from '@/components/card/PostsCard';
+import { fetchPosts, Post } from '@/lib/api/post';
 
-const { Title, Text } = Typography;
-
-interface Topic {
-    name: string;
-    color: string;
-    posts: number;
-}
+const { Title } = Typography;
 
 const ForumPage: React.FC = () => {
-    const [selectedMenu, setSelectedMenu] = useState('home');
+    const [posts, setPosts] = useState<Post[]>([]);
+    const [count, setCount] = useState(3);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
-    const menuItems: MenuProps['items'] = [
-        {
-            key: 'home',
-            icon: <HomeOutlined />,
-            label: 'Home',
-        },
-        {
-            key: 'explore',
-            icon: <CompassOutlined />,
-            label: 'Explore',
-        },
-        {
-            key: 'bookmarks',
-            icon: <BookOutlined />,
-            label: 'Bookmarks',
-        },
-    ];
+    const loadPosts = async (limit: number) => {
+        setLoading(true);
+        setError(null);
+        try {
+            const res = await fetchPosts(limit);
+            if (res.success && res.data) {
+                setPosts(res.data);
+            } else {
+                setError(res.error || 'Lỗi khi tải bài viết');
+            }
+        } catch (e) {
+            setError('Lỗi không xác định khi tải bài viết');
+        } finally {
+            setLoading(false);
+        }
+    };
 
-    const categories = [
-        { name: 'Environment', count: 248 },
-        { name: 'Education', count: 156 },
-        { name: 'Health', count: 42 },
-    ];
+    useEffect(() => {
+        loadPosts(count);
+    }, [count]);
 
-    const posts = [
-        {
-            _id: 1,
-            author: {
-                _id: 1,
-                name: 'Alice Johnson',
-                avatar: 'https://i.pravatar.cc/150?img=32',
-                role: 'Admin',
-            },
-            title: 'Building a Sustainable Future',
-            content: 'Let’s work together to make the world greener and cleaner!',
-            timeAgo: '2h ago',
-            replies: 12,
-            likes: 124,
-            isBookmarked: true,
-        },
-        {
-            _id: 2,
-            author: {
-                _id: 2,
-                name: 'Bob Smith',
-                avatar: 'https://i.pravatar.cc/150?img=12',
-                role: 'Member',
-            },
-            title: 'Eco-Friendly Tips',
-            content: 'Here are 5 simple ways to reduce your carbon footprint every day.',
-            timeAgo: '5h ago',
-            replies: 8,
-            likes: 89,
-            isBookmarked: false,
-        },
-        {
-            _id: 3,
-            author: {
-                _id: 3,
-                name: 'Charlie Rose',
-                avatar: 'https://i.pravatar.cc/150?img=45',
-                role: 'Contributor',
-            },
-            title: 'Join Our Green Campaign',
-            content: 'Excited to announce our new initiative to plant 1,000 trees!',
-            timeAgo: '1d ago',
-            replies: 20,
-            likes: 230,
-            isBookmarked: true,
-        },
-    ];
-
-    const trendingTopics: Topic[] = [
-        { name: '#contribution', color: 'blue', posts: 1200 },
-        { name: '#rasing', color: 'green', posts: 892 },
-        { name: '#giveaway', color: 'purple', posts: 654 },
-    ];
-
-    const topCommenters = [
-        { name: 'Alex Turner', role: 'Senior Developer', avatar: '/avatars/alex.jpg' },
-        { name: 'Emma Wilson', role: 'UI Designer', avatar: '/avatars/emma.jpg' },
-        { name: 'Lisa Anderson', role: 'Product Manager', avatar: '/avatars/lisa.jpg' },
-    ];
+    const handleLoadMore = () => {
+        setCount(prev => prev + 3); // mỗi lần bấm load thêm 3 bài
+    };
 
     return (
         <>
-            <Flex justify="space-between" align="center" style={{ marginBottom: '24px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 24, alignItems: 'center' }}>
                 <Title level={3} style={{ margin: 0 }}>Recent Discussions</Title>
-                <Button type="primary" size='large' icon={<PlusOutlined />}>New Post</Button>
-            </Flex>
+                <Button type="primary" size="large">New Post</Button>
+            </div>
+
+            {loading && <Spin tip="Đang tải bài viết..." style={{ display: 'block', marginBottom: 24 }} />}
+            {error && <Alert type="error" message={error} style={{ marginBottom: 24 }} />}
+
             <List
                 itemLayout="vertical"
                 dataSource={posts}
@@ -113,7 +54,7 @@ const ForumPage: React.FC = () => {
                     <PostsCard
                         key={post._id}
                         _id={post._id}
-                        author={post.author}
+                        author_id={post.author_id}
                         title={post.title}
                         content={post.content}
                         timeAgo={post.timeAgo}
@@ -124,8 +65,11 @@ const ForumPage: React.FC = () => {
                     />
                 )}
             />
-            <Row justify="center" style={{ marginTop: '30px' }}>
-                <Button type='dashed' size="large">Load More</Button>
+
+            <Row justify="center" style={{ marginTop: 30 }}>
+                <Button type="dashed" size="large" onClick={handleLoadMore} disabled={loading}>
+                    Load More
+                </Button>
             </Row>
         </>
     );

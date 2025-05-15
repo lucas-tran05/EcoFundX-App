@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "post_id": "1",
+        "author_id": "1",
+        "avatar": "/avatars/sarah.jpg",
+        "content": "This is exactly the kind of sustainable solution we need. Looking forward to seeing this implemented!",
+        "datetime": "2 days ago"
+    },
+    {
+        "id": "2",
+        "post_id": "1",
+        "author_id": "2",
+        "avatar": "/avatars/david.jpg",
+        "content": "Have you considered implementing this in tropical regions? The solar efficiency might be even better there.",
+        "datetime": "1 day ago"
+    }
+]

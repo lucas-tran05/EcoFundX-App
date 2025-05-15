@@ -1,217 +1,95 @@
 'use client';
-import React from 'react';
+import React, { useState, useEffect, FC } from 'react';
+import { useParams } from 'next/navigation';
 import Link from 'next/link';
-import { Layout, Row, Col, Button, Typography, Progress, Card, Divider, Space, Avatar, Collapse, Input, List } from "antd";
-import { LinkedinOutlined, TwitterOutlined, GlobalOutlined, SafetyOutlined, WarningOutlined, DownOutlined, SendOutlined } from '@ant-design/icons';
+import {
+    Layout, Row, Col, Button, Typography, Progress, Card, Divider, Space, Avatar, Collapse, Input, List
+} from "antd";
+import {
+    LinkedinOutlined, TwitterOutlined, GlobalOutlined,
+    SafetyOutlined, WarningOutlined, DownOutlined, SendOutlined
+} from '@ant-design/icons';
 import type { ProgressProps } from 'antd';
 import GifCard from '@/components/card/GifCard';
 import CommentCard, { CommentType } from '@/components/card/CommentCard';
-import { FC } from "react";
-import { useParams } from 'next/navigation';
+import { fetchProjectById } from '@/lib/api/project';
 
-const projects = [
-    {
-        id: '1',
-        title: "Project 1",
-        tag: "Renewable energy",
-        description: "Description of project 1",
-        image: "/images/post.png",
-        endDate: new Date("2026-12-31"),
-        progress: 50,
-        amount: 1000000,
-        gif: [
-            {
-                id_gif: '1',
-                img: "/images/post.png",
-                title: "Project 1 - Gif 1",
-                description: "Gif description 1",
-                price: 500000
-            },
-            {
-                id_gif: '2',
-                img: "/images/post.png",
-                title: "Project 1 - Gif 2",
-                description: "Gif description 2",
-                price: 500000
-            }
-        ],
-        onClick: () => console.log("Project 1 clicked"),
-    },
-    {
-        id: '2',
-        title: "Project 2",
-        tag: "Renewable energy",
-        description: "Description of project 2",
-        image: "/images/post.png",
-        endDate: new Date("2026-01-31"),
-        progress: 75,
-        amount: 2000000,
-        gif: [
-            {
-                id_gif: '3',
-                img: "/images/post.png",
-                title: "Project 2 - Gif 1",
-                description: "Gif description 1",
-                price: 1000000
-            },
-            {
-                id_gif: '4',
-                img: "/images/post.png",
-                title: "Project 2 - Gif 2",
-                description: "Gif description 2",
-                price: 1000000
-            }
-        ],
-        onClick: () => console.log("Project 2 clicked"),
-    },
-    {
-        id: '3',
-        title: "Project 3",
-        tag: "Renewable energy",
-        description: "Description of project 3",
-        image: "/images/home.svg",
-        endDate: new Date("2026-02-28"),
-        progress: 25,
-        amount: 500000,
-        gif: [
-            {
-                id_gif: '5',
-                img: "/images/home.svg",
-                title: "Project 3 - Gif 1",
-                description: "Gif description 1",
-                price: 250000
-            },
-            {
-                id_gif: '6',
-                img: "/images/home.svg",
-                title: "Project 3 - Gif 2",
-                description: "Gif description 2",
-                price: 250000
-            }
-        ],
-        onClick: () => console.log("Project 3 clicked"),
-    },
-    {
-        id: '4',
-        title: "Project 4",
-        tag: "Renewable energy",
-        description: "Description of project 4",
-        image: "/images/post.png",
-        endDate: new Date("2026-03-31"),
-        progress: 100,
-        amount: 1500000,
-        gif: [
-            {
-                id_gif: '7',
-                img: "/images/post.png",
-                title: "Project 4 - Gif 1",
-                description: "Gif description 1",
-                price: 750000
-            },
-            {
-                id_gif: '8',
-                img: "/images/post.png",
-                title: "Project 4 - Gif 2",
-                description: "Gif description 2",
-                price: 750000
-            }
-        ],
-        onClick: () => console.log("Project 4 clicked"),
-    },
-    {
-        id: '5',
-        title: "Project 5",
-        tag: "Renewable energy",
-        description: "Description of project 5",
-        image: "/images/home.svg",
-        endDate: new Date("2026-04-30"),
-        progress: 10,
-        amount: 3000000,
-        gif: [
-            {
-                id_gif: '9',
-                img: "/images/home.svg",
-                title: "Project 5 - Gif 1",
-                description: "Gif description 1",
-                price: 1500000
-            },
-            {
-                id_gif: '10',
-                img: "/images/home.svg",
-                title: "Project 5 - Gif 2",
-                description: "Gif description 2",
-                price: 1500000
-            }
-        ],
-        onClick: () => console.log("Project 5 clicked"),
-    },
-    {
-        id: '6',
-        title: "Project 6",
-        tag: "Renewable energy",
-        description: "Description of project 6",
-        image: "/images/post.png",
-        endDate: new Date("2026-05-31"),
-        progress: 60,
-        amount: 1200000,
-        gif: [
-            {
-                id_gif: '11',
-                img: "/images/post.png",
-                title: "Project 6 - Gif 1",
-                description: "Gif description 1",
-                price: 600000
-            },
-            {
-                id_gif: '12',
-                img: "/images/post.png",
-                title: "Project 6 - Gif 2",
-                description: "Gif description 2",
-                price: 600000
-            }
-        ],
-        onClick: () => console.log("Project 6 clicked"),
-    }
-];
+interface GifItem {
+    id_gif: string;
+    img: string;
+    title: string;
+    description: string;
+    price: number;
+}
 
-const comments: CommentType[] = [
-    {
-        id: '1',
-        author: 'Sarah Johnson',
-        avatar: '/avatars/sarah.jpg',
-        content: 'This is exactly the kind of sustainable solution we need. Looking forward to seeing this implemented!',
-        datetime: '2 days ago'
-    },
-    {
-        id: '2',
-        author: 'David Williams',
-        avatar: '/avatars/david.jpg',
-        content: 'Have you considered implementing this in tropical regions? The solar efficiency might be even better there.',
-        datetime: '1 day ago'
-    }
-];
+interface Project {
+    id: string;
+    title: string;
+    tag: string;
+    description: string;
+    image: string;
+    endDate: string;
+    progress: number;
+    amount: number;
+    author_id: string;
+    gif: GifItem[];
+}
 
 const ProjectView: FC = () => {
-    const { id } = useParams();
-    const project = projects.find((p) => p.id === id);
+    const { id } = useParams<{ id: string }>();
+    const [project, setProject] = useState<Project | null>(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        const loadProject = async () => {
+            const result = await fetchProjectById(id);
+            if (result.success) {
+                setProject(result.data!);
+            } else {
+                setError(result.error || 'Không tìm thấy dự án');
+            }
+            setLoading(false);
+        };
+        if (id) loadProject();
+    }, [id]);
+
+    if (loading) return <div>Đang tải...</div>;
+    if (error) return <div>Lỗi: {error}</div>;
+    if (!project) return <div>Không có dữ liệu</div>;
 
     const twoColors: ProgressProps['strokeColor'] = {
         '0%': '#108ee9',
         '100%': '#87d068',
     };
+
+    const daysRemaining = project.endDate
+        ? Math.ceil((new Date(project.endDate).getTime() - Date.now()) / (1000 * 3600 * 24))
+        : 'No end';
+
     return (
         <Row gutter={[24, 24]} align={"middle"} justify={"center"} style={{ padding: '8px', margin: 0 }}>
             <Col xs={24} sm={24} md={24} lg={20}>
                 <Card style={{ width: '100%' }}>
                     <Row gutter={[24, 24]}>
                         <Col xs={24} sm={24} md={16} lg={14}>
-                            <Layout.Content style={{padding: '24px' }}>
-                                <img src={project?.image} alt={project?.title} style={{ width: '100%', marginBottom: '24px' }} />
-                                <Typography.Title level={4} ellipsis={{ rows: 2, expandable: true }}>{project?.title}</Typography.Title>
-                                <Typography.Paragraph ellipsis={{ rows: 5, expandable: true }}>
-                                    {project?.description}
-                                </Typography.Paragraph>
+                            <Layout.Content style={{ padding: '24px' }}>
+                                <img
+                                    src={project.image}
+                                    alt={project.title}
+                                    style={{
+                                        width: '100%',
+                                        maxHeight: '400px',      
+                                        objectFit: 'cover', 
+                                        marginBottom: '24px',
+                                        borderRadius: '8px', 
+                                    }}
+                                />
 
+                                <Typography.Title level={4} ellipsis={{ rows: 2, expandable: true }}>{project.title}</Typography.Title>
+                                <Typography.Paragraph ellipsis={{ rows: 5, expandable: true }}>
+                                    {project.description}
+                                </Typography.Paragraph>
                             </Layout.Content>
                         </Col>
                         <Col xs={24} sm={24} md={8} lg={10}>
@@ -219,50 +97,44 @@ const ProjectView: FC = () => {
                                 <Row align={"middle"}>
                                     <Col span={12}>
                                         <Typography.Title level={4} style={{ color: 'var(--primary-color)', fontWeight: 'bold' }}>
-                                            ₫{((project?.amount || 0) * (project?.progress || 0) / 100).toLocaleString('vi-VN')}
+                                            ₫{((project.amount || 0) * (project.progress || 0) / 100).toLocaleString('vi-VN')}
                                         </Typography.Title>
                                     </Col>
                                     <Col span={12} style={{ textAlign: 'right' }}>
-                                        <Typography.Title level={5} >of  ₫{(project?.amount || 0 / 100).toLocaleString('vi-VN')}</Typography.Title>
+                                        <Typography.Title level={5}>
+                                            of ₫{(project.amount || 0).toLocaleString('vi-VN')}
+                                        </Typography.Title>
                                     </Col>
                                 </Row>
-                                <Progress percent={project?.progress} status="active" strokeColor={twoColors} />
+                                <Progress percent={project.progress} status="active" strokeColor={twoColors} />
                                 <Row gutter={[16, 16]} style={{ marginTop: '8px' }}>
                                     <Col span={12}>
-                                        <Typography.Text strong>1,245</Typography.Text>
-                                        <br />
+                                        <Typography.Text strong>1,245</Typography.Text><br />
                                         <Typography.Text type="secondary">Người ủng hộ</Typography.Text>
                                     </Col>
                                     <Col span={12}>
-                                        <Typography.Text strong>{project?.endDate ? Math.ceil((project?.endDate.getTime() - Date.now()) / (1000 * 3600 * 24)) : "No end"}</Typography.Text>
-                                        <br />
+                                        <Typography.Text strong>{daysRemaining}</Typography.Text><br />
                                         <Typography.Text type="secondary">Ngày còn lại</Typography.Text>
                                     </Col>
                                 </Row>
-                                <Button disabled={project?.progress === 100} type="primary" size="large" block style={{ marginTop: '16px' }}>
-                                    <Link href={`/projects/${project?.id}/contribute/amount`}>Contribute now</Link>
+                                <Button disabled={project.progress === 100} type="primary" size="large" block style={{ marginTop: '16px' }}>
+                                    <Link href={`/projects/${project.id}/contribute/amount`}>Contribute now</Link>
                                 </Button>
                                 <Divider />
-                                <Row >
-                                    <Typography.Title level={5}> Can receive</Typography.Title>
+                                <Row>
+                                    <Typography.Title level={5}>Can receive</Typography.Title>
                                     <Col span={24}>
-                                        {Array.isArray(project?.gif) && project.gif.map((gif) => (
-                                            <GifCard
-                                                key={gif.id_gif}
-                                                id_gif={gif.id_gif}
-                                                img={gif.img}
-                                                title={gif.title}
-                                                description={gif.description}
-                                                price={gif.price}
-                                            />
+                                        {project.gif?.map(gif => (
+                                            <GifCard key={gif.id_gif} {...gif} />
                                         ))}
                                     </Col>
                                 </Row>
                             </Layout.Content>
                         </Col>
                     </Row>
+
                     <Divider />
-                    {/* Project Creator */}
+
                     <Layout.Content style={{ padding: '24px' }}>
                         <Typography.Title level={4}>Project Creator</Typography.Title>
                         <Row gutter={[16, 16]} align="middle" style={{ marginBottom: '16px' }}>
@@ -283,87 +155,49 @@ const ProjectView: FC = () => {
                             </Col>
                         </Row>
                     </Layout.Content>
-                    {/* Risks & Challenges */}
+
                     <Layout.Content style={{ padding: '24px' }}>
                         <Typography.Title level={4}>Risks & Challenges</Typography.Title>
                         <Row gutter={[24, 24]}>
                             <Col xs={24} sm={24} md={12} lg={12}>
                                 <Card>
                                     <WarningOutlined style={{ fontSize: '24px', color: '#faad14' }} />
-                                    <div>
-                                        <Typography.Title level={5}>Supply Chain Risks</Typography.Title>
-                                        <Typography.Text>
-                                            Potential delays in component delivery due to global supply chain disruptions. We have multiple suppliers lined up to mitigate this risk.
-                                        </Typography.Text>
-                                    </div>
+                                    <Typography.Title level={5}>Supply Chain Risks</Typography.Title>
+                                    <Typography.Text>
+                                        Potential delays in component delivery due to global supply chain disruptions. We have multiple suppliers lined up to mitigate this risk.
+                                    </Typography.Text>
                                 </Card>
                             </Col>
                             <Col xs={24} sm={24} md={12} lg={12}>
                                 <Card>
                                     <SafetyOutlined style={{ fontSize: '24px', color: '#1890ff' }} />
-                                    <div>
-                                        <Typography.Title level={5}>Quality Assurance</Typography.Title>
-                                        <Typography.Text>
-                                            Each unit undergoes rigorous testing before deployment. We maintain ISO 9001 certification for quality management systems.
-                                        </Typography.Text>
-                                    </div>
+                                    <Typography.Title level={5}>Quality Assurance</Typography.Title>
+                                    <Typography.Text>
+                                        Each unit undergoes rigorous testing before deployment. We maintain ISO 9001 certification for quality management systems.
+                                    </Typography.Text>
                                 </Card>
                             </Col>
                         </Row>
                     </Layout.Content>
-                    {/* Funding Allocation */}
+
                     <Layout.Content style={{ padding: '24px' }}>
                         <Typography.Title level={4}>Funding Allocation</Typography.Title>
                         <Row gutter={[24, 24]}>
                             <Col xs={24} sm={24} md={12} lg={12}>
-                                <div style={{ marginBottom: '16px' }}>
-                                    <Typography.Text>Research & Development</Typography.Text>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <Progress
-                                            percent={40}
-                                            showInfo={false}
-                                            strokeColor="#1bab6b"
-                                            style={{ flex: 1, marginRight: '10px' }}
-                                        />
-                                        <Typography.Text strong>40%</Typography.Text>
+                                {[
+                                    { label: 'Research & Development', percent: 40, color: '#1bab6b' },
+                                    { label: 'Manufacturing', percent: 30, color: '#4285f4' },
+                                    { label: 'Distribution', percent: 20, color: '#a142f4' },
+                                    { label: 'Marketing', percent: 10, color: '#f4b400' },
+                                ].map(({ label, percent, color }) => (
+                                    <div key={label} style={{ marginBottom: '16px' }}>
+                                        <Typography.Text>{label}</Typography.Text>
+                                        <div style={{ display: 'flex', alignItems: 'center' }}>
+                                            <Progress percent={percent} showInfo={false} strokeColor={color} style={{ flex: 1, marginRight: '10px' }} />
+                                            <Typography.Text strong>{percent}%</Typography.Text>
+                                        </div>
                                     </div>
-                                </div>
-                                <div style={{ marginBottom: '16px' }}>
-                                    <Typography.Text>Manufacturing</Typography.Text>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <Progress
-                                            percent={30}
-                                            showInfo={false}
-                                            strokeColor="#4285f4"
-                                            style={{ flex: 1, marginRight: '10px' }}
-                                        />
-                                        <Typography.Text strong>30%</Typography.Text>
-                                    </div>
-                                </div>
-                                <div style={{ marginBottom: '16px' }}>
-                                    <Typography.Text>Distribution</Typography.Text>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <Progress
-                                            percent={20}
-                                            showInfo={false}
-                                            strokeColor="#a142f4"
-                                            style={{ flex: 1, marginRight: '10px' }}
-                                        />
-                                        <Typography.Text strong>20%</Typography.Text>
-                                    </div>
-                                </div>
-                                <div>
-                                    <Typography.Text>Marketing</Typography.Text>
-                                    <div style={{ display: 'flex', alignItems: 'center' }}>
-                                        <Progress
-                                            percent={10}
-                                            showInfo={false}
-                                            strokeColor="#f4b400"
-                                            style={{ flex: 1, marginRight: '10px' }}
-                                        />
-                                        <Typography.Text strong>10%</Typography.Text>
-                                    </div>
-                                </div>
+                                ))}
                             </Col>
                             <Col xs={24} sm={24} md={12} lg={12}>
                                 <Card style={{ marginBottom: '24px' }}>
@@ -381,7 +215,7 @@ const ProjectView: FC = () => {
                             </Col>
                         </Row>
                     </Layout.Content>
-                    {/* FAQ Section */}
+
                     <Layout.Content style={{ padding: '24px' }}>
                         <Typography.Title level={4}>Frequently Asked Questions</Typography.Title>
                         <Collapse
@@ -400,37 +234,28 @@ const ProjectView: FC = () => {
                             </Collapse.Panel>
                         </Collapse>
                     </Layout.Content>
+
                     <Layout.Content style={{ padding: '24px' }}>
-
                         <Typography.Title level={4} style={{ marginBottom: '24px' }}>Community Discussion</Typography.Title>
-
                         <div style={{ marginBottom: '20px' }}>
                             <Input.TextArea
                                 placeholder="Share your thoughts..."
                                 autoSize={{ minRows: 3, maxRows: 6 }}
                                 style={{ marginBottom: '16px', borderRadius: '8px', padding: '12px' }}
                             />
-                            <Button
-                                type="primary"
-                                icon={<SendOutlined />}
-                            >
+                            <Button type="primary" icon={<SendOutlined />}>
                                 Post Comment
                             </Button>
                         </div>
-
-                        <List
+                        {/* <List
                             itemLayout="horizontal"
                             dataSource={comments}
-                            renderItem={(item) => (
-                                <CommentCard key={item.id} comment={item} />
-                            )}
-                        />
-
+                            renderItem={(item) => <CommentCard key={item.id} comment={item} />}
+                        /> */}
                     </Layout.Content>
                 </Card>
             </Col>
         </Row>
-
     );
 };
 
