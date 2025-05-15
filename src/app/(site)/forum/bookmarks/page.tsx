@@ -1,4 +1,4 @@
-// src/components/card/BookMarks.tsx
+// src/components/card/PostsCard.tsx
 import React from 'react';
 
 export interface Author {
@@ -20,7 +20,7 @@ export interface PostsCardProps {
     onClick: () => void;
 }
 
-const BookMarks: React.FC<PostsCardProps> = ({
+const PostsCard: React.FC<PostsCardProps> = ({
     _id,
     author,
     title,
@@ -64,4 +64,4 @@ const BookMarks: React.FC<PostsCardProps> = ({
     );
 };
 
-export default BookMarks;
+export default PostsCard;
