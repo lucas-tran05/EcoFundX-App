@@ -1,86 +1,67 @@
-'use client';
+// src/components/card/BookMarks.tsx
 import React from 'react';
-import { Button, List, Typography,  Flex, Row } from 'antd';
-import PostsCard from '@/components/card/PostsCard';
 
-const { Title } = Typography;
+export interface Author {
+    _id: number;
+    name: string;
+    avatar: string;
+    role: string;
+}
 
-const ForumBookmark: React.FC = () => {
-    const posts = [
-        {
-            _id: 1,
-            author: {
-                _id: 1,
-                name: 'Alice Johnson',
-                avatar: 'https://i.pravatar.cc/150?img=32',
-                role: 'Admin',
-            },
-            title: 'Building a Sustainable Future',
-            content: 'Let’s work together to make the world greener and cleaner!',
-            timeAgo: '2h ago',
-            replies: 12,
-            likes: 124,
-            isBookmarked: true,
-        },
-        {
-            _id: 2,
-            author: {
-                _id: 2,
-                name: 'Bob Smith',
-                avatar: 'https://i.pravatar.cc/150?img=12',
-                role: 'Member',
-            },
-            title: 'Eco-Friendly Tips',
-            content: 'Here are 5 simple ways to reduce your carbon footprint every day.',
-            timeAgo: '5h ago',
-            replies: 8,
-            likes: 89,
-            isBookmarked: false,
-        },
-        {
-            _id: 3,
-            author: {
-                _id: 3,
-                name: 'Charlie Rose',
-                avatar: 'https://i.pravatar.cc/150?img=45',
-                role: 'Contributor',
-            },
-            title: 'Join Our Green Campaign',
-            content: 'Excited to announce our new initiative to plant 1,000 trees!',
-            timeAgo: '1d ago',
-            replies: 20,
-            likes: 230,
-            isBookmarked: true,
-        },
-    ];
+export interface PostsCardProps {
+    _id: number;
+    author: Author;
+    title: string;
+    content: string;
+    timeAgo: string;
+    replies: number;
+    likes: number;
+    isBookmarked: boolean;
+    onClick: () => void;
+}
+
+const BookMarks: React.FC<PostsCardProps> = ({
+    _id,
+    author,
+    title,
+    content,
+    timeAgo,
+    replies,
+    likes,
+    isBookmarked,
+    onClick,
+}) => {
     return (
-        <>
-            <Flex justify="space-between" align="center" style={{ marginBottom: '24px' }}>
-                <Title level={3} style={{ margin: 0 }}>Bookmarks </Title>
-            </Flex>
-            <List
-                itemLayout="vertical"
-                dataSource={posts}
-                renderItem={(post) => (
-                    <PostsCard
-                        key={post._id}
-                        _id={post._id}
-                        author={post.author}
-                        title={post.title}
-                        content={post.content}
-                        timeAgo={post.timeAgo}
-                        replies={post.replies}
-                        likes={post.likes}
-                        isBookmarked={post.isBookmarked}
-                        onClick={() => { }}
-                    />
-                )}
-            />
-            <Row justify="center" style={{ marginTop: '30px' }}>
-                <Button type='dashed' size="large">Load More</Button>
-            </Row>
-        </>
+        <div
+            style={{
+                border: '1px solid #ddd',
+                borderRadius: 8,
+                padding: 16,
+                marginBottom: 16,
+                cursor: 'pointer',
+            }}
+            onClick={onClick}
+        >
+            <div style={{ display: 'flex', alignItems: 'center', marginBottom: 12 }}>
+                <img
+                    src={author.avatar}
+                    alt={author.name}
+                    style={{ width: 40, height: 40, borderRadius: '50%', marginRight: 12 }}
+                />
+                <div>
+                    <strong>{author.name}</strong> <small>({author.role})</small>
+                    <div style={{ fontSize: 12, color: '#888' }}>{timeAgo}</div>
+                </div>
+            </div>
+            <h3 style={{ margin: '8px 0' }}>{title}</h3>
+            <p style={{ marginBottom: 12 }}>{content}</p>
+            <div style={{ fontSize: 14, color: '#555', display: 'flex', gap: 16 }}>
+                <span>Replies: {replies}</span>
+                <span>Likes: {likes}</span>
+                <span>{isBookmarked ? '⭐ Bookmarked' : ''}</span>
+            </div>
+        </div>
     );
 };
 
-export default ForumBookmark;
+export default BookMarks;
