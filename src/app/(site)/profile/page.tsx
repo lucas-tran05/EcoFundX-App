@@ -33,6 +33,8 @@ const statsData = [
 
 
 const ProfilePage: React.FC = () => {
+
+    const router = useRouter();
     const [userData, setUserData] = useState<UserProfileData>({
         id: '',
         name: 'Loading...',
@@ -143,6 +145,9 @@ const ProfilePage: React.FC = () => {
         return `${diff} days left`;
     };
 
+    const handleProjectClick = (project: Project) => {
+        router.push(`/projects/${project.id}`);
+    };
 
     return (
         <Flex vertical style={{ padding: '32px', background: 'var(--background-primary)', minHeight: '100vh', maxWidth: '1200px', margin: '0 auto' }}>
@@ -231,6 +236,7 @@ const ProfilePage: React.FC = () => {
                                             level={4}
                                             style={{ marginBottom: '4px', fontWeight: 600 }}
                                             ellipsis={{ rows: 1, expandable: false }}
+                                            onClick={() => handleProjectClick(campaign)}
                                         >
                                             {campaign.title}
                                         </Title>
