@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import AppHeader from '@/components/AppHeader';
 import AppFooter from '@/components/AppFooter';
+import FloatAI from '@/components/FloatAI';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from 'antd';
 import '../styles/globals.css';
@@ -28,6 +29,8 @@ export default function RootLayout({
                 <ConfigProvider theme={theme}>
                     <AntdRegistry>
                         {children}
+                        <FloatAI />
+
                     </AntdRegistry>
                 </ConfigProvider>
             </body>
